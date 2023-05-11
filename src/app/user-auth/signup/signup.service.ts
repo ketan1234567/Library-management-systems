@@ -10,7 +10,7 @@ import { Observable, catchError, throwError } from 'rxjs';
 export class SignupService {
 
   apiurl='http://localhost:1010/signup-data/data'
-  apiurl_1='http://localhost:1010/signup-data/data'
+  apiurl_1='http://localhost:1010/login-data/login'
   //http headers 
   httpHeaders = new HttpHeaders().set('Content-Type', 'application/json');
   constructor(private httpClient: HttpClient) {}
@@ -24,9 +24,9 @@ export class SignupService {
   }
   
   checkLoginData(data:any):Observable<any>{
-    let api_url=`${this.apiurl_1}`;
+    let api_url_1=`${this.apiurl_1}`;
     return this.httpClient
-    .post(api_url,data,{observe: 'response', withCredentials: true})
+    .post(api_url_1,data,{observe: 'response', withCredentials: true})
     .pipe( catchError(this.handleError))
     
   }
