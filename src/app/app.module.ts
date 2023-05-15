@@ -6,18 +6,23 @@ import { AppComponent } from './app.component';
 import { UserAuthModule } from './user-auth/user-auth.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { AdminModuleModule } from './admin-module/admin-module.module';
+import { HeaderComponent } from './header/header.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     UserAuthModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+
+    AdminModuleModule
   ],
   providers: [],
   bootstrap: [AppComponent]

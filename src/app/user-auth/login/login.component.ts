@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { SignupService } from '../signup/signup.service';
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router'; 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -9,7 +10,7 @@ import Swal from 'sweetalert2';
 })
 export class LoginComponent implements OnInit {
   processValidation:any
-  constructor(private service:SignupService){}
+  constructor(private service:SignupService,private router:Router){}
   ngOnInit(): void {
    
   }
@@ -23,6 +24,7 @@ export class LoginComponent implements OnInit {
     if(this.reactiveForm.valid) {
      this.service.checkLoginData(this.reactiveForm.value).subscribe((result)=>{
       Swal.fire('Thank you...', 'You submitted succesfully!', 'success')
+      this.router.navigate(['admin-dash']); 
        
      })
     }
