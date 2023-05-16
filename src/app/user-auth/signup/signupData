@@ -1,6 +1,0 @@
-export interface signUp{
-    username: string,
-    email:string,
-    password:string
-   
-}

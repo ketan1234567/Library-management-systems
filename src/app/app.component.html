@@ -1,4 +1,13 @@
-<app-header></app-header>
-<main class="content">
+
+
+
+
+
+
+
+  <app-header *ngIf="this.currentRoute!=='/sign-in'"></app-header>
+<main class="content" >
    <router-outlet></router-outlet>
+ <app-footer *ngIf="this.currentRoute!=='/sign-in'" > </app-footer>
 </main>
+
