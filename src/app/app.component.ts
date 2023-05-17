@@ -8,6 +8,7 @@ import { Router,Event, NavigationStart, NavigationEnd, NavigationError } from '@
 })
 export class AppComponent implements OnInit {
   currentRoute:any
+  width: number = 0;
   ngOnInit(): void {
    
   }
@@ -18,7 +19,6 @@ export class AppComponent implements OnInit {
             // Show progress spinner or progress bar
             console.log('Route change detected');
         }
-
         if (event instanceof NavigationEnd) {
             // Hide progress spinner or progress bar
             this.currentRoute = event.url;          

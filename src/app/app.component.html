@@ -5,9 +5,9 @@
 
 
 
-  <app-header *ngIf="this.currentRoute!=='/sign-in'"></app-header>
-<main class="content" >
+  <app-header *ngIf="this.currentRoute!='/sign-in' && this.currentRoute!='/sign-up'"   ></app-header>
+<main class="content"[style.margin-left] = "width" >
    <router-outlet></router-outlet>
- <app-footer *ngIf="this.currentRoute!=='/sign-in'" > </app-footer>
+ <app-footer *ngIf="this.currentRoute!='/sign-in' && this.currentRoute!='/sign-up'"> </app-footer>
 </main>
 
