@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./signin.component.css']
 })
 export class SigninComponent implements OnInit {
-
+  processValidation:any
   constructor(private service:SiginService,private router:Router) { }
 
   ngOnInit(): void {
@@ -23,11 +23,20 @@ export class SigninComponent implements OnInit {
   })
 
   signin(){
-    this.service.CheckLoginData(this.reactiveForm.value).subscribe((result)=>{
-      console.log(result);
-      Swal.fire('Thank you...', 'You submitted succesfully!', 'success')
-        this.router.navigate(['/tables'])
-    })
+    this.processValidation=true
+    if(this.reactiveForm.valid){
+      this.service.CheckLoginData(this.reactiveForm.value).subscribe((result)=>{
+        console.log(result);
+        const data=this.router
+        if(result.statusText==="OK"){
+          Swal.fire({ text: result.statusText, icon: 'success'}).then(function (result) {data.navigate(['/tables'])})
+        }else{
+          Swal.fire({ text: "Error", icon: 'error'}).then(function (result) {data.navigate(['/tables'])})
+        }
+      })
+
+    }
+
     
     
  

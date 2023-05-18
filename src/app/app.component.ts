@@ -8,7 +8,8 @@ import { Router,Event, NavigationStart, NavigationEnd, NavigationError } from '@
 })
 export class AppComponent implements OnInit {
   currentRoute:any
-  width: number = 0;
+  small:number=0;
+  big:number=260;
   ngOnInit(): void {
    
   }

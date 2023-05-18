@@ -17,8 +17,11 @@
                             </svg>
                          </span>
                          <input type="text" class="form-control" formControlName="username" placeholder="example@company.com" id="email" autofocus required>
-                      </div>
+                       
                    </div>
+                   &nbsp;
+                   <label *ngIf="reactiveForm.get('username')?.invalid && processValidation" class="error">Your UserName is required</label>
+                  </div>
                    <div class="form-group">
                       <div class="form-group mb-4">
                          <label for="email">Your Email</label>
@@ -29,7 +32,9 @@
                                </svg>
                             </span>
                             <input type="email"  formControlName="email" placeholder="Email" class="form-control" id="password" required>
+                           
                          </div>
+                         <label *ngIf="reactiveForm.get('email')?.invalid && processValidation" class="error">Your email is required</label>
                       </div>
                       <div class="form-group mb-4">
                          <label for="confirm_password"> Password</label>
@@ -40,7 +45,9 @@
                                </svg>
                             </span>
                             <input type="password" placeholder="Password"  formControlName="password"  class="form-control" id="confirm_password" required>
+                           
                          </div>
+                         <label *ngIf="reactiveForm.get('password')?.invalid && processValidation" class="error">Your email is required</label>
                       </div>
                       <div class="mb-4">
                          <div class="form-check"><input class="form-check-input" type="checkbox" value="" id="remember"> <label class="form-check-label fw-normal mb-0" for="remember">I agree to the <a href="#" class="fw-bold">terms and conditions</a></label></div>
