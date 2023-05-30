@@ -11,6 +11,7 @@ import { ButtonsComponent } from './buttons/buttons.component';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { ModalsComponent } from './modals/modals.component';
 import { FormsComponent } from './forms/forms.component';
+import { AddBookComponent } from './Books/add-book/add-book.component';
 
 const routes: Routes = [
   { path: '', component: DashboardComponent },
@@ -24,6 +25,7 @@ const routes: Routes = [
   { path: 'notifications', component: NotificationsComponent },
   { path: 'modals', component: ModalsComponent },
   { path: 'forms', component: FormsComponent },
+  { path: 'add-book', component: AddBookComponent },
 ];
 
 @NgModule({

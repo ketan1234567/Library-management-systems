@@ -18,6 +18,7 @@ import { ModalsComponent } from './modals/modals.component';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { AddBookComponent } from './Books/add-book/add-book.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { HttpClientModule } from '@angular/common/http';
     ButtonsComponent,
     FormsComponent,
     ModalsComponent,
-    NotificationsComponent
+    NotificationsComponent,
+    AddBookComponent
   ],
   imports: [
     BrowserModule,
