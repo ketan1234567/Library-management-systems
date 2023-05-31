@@ -19,6 +19,7 @@ import { NotificationsComponent } from './notifications/notifications.component'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AddBookComponent } from './Books/add-book/add-book.component';
+import { ViewCategoryComponent } from './Books/view-category/view-category.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { AddBookComponent } from './Books/add-book/add-book.component';
     FormsComponent,
     ModalsComponent,
     NotificationsComponent,
-    AddBookComponent
+    AddBookComponent,
+    ViewCategoryComponent
   ],
   imports: [
     BrowserModule,
