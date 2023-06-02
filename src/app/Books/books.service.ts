@@ -12,6 +12,8 @@ export class BooksService {
   constructor(private httpclient:HttpClient) { }
   
   apiurl = 'http://localhost:1010/add/category';
+  apiurlu='http://localhost:1010/add/category'
+  apiurlus='http://localhost:1010/delete/category'
 
 
   addCategory(data:any):Observable<any>{
@@ -22,8 +24,14 @@ export class BooksService {
   }
   
   viewCategory():Observable<any>{
-    let api_url = `${this.apiurl}`;
+    let api_url = `${this.apiurlu}`;
     return this.httpclient.get(api_url,  { observe: 'response', withCredentials: true }).pipe(
+      catchError(this.handleError)
+    )
+  }
+  deleteCategory(_id:any):Observable<any>{
+    let api_url = `${this.apiurlus}`;
+    return this.httpclient.delete(api_url+"/"+_id,{ observe: 'response', withCredentials: true }).pipe(
       catchError(this.handleError)
     )
   }
