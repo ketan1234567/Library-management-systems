@@ -1,12 +1,15 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, catchError, throwError } from 'rxjs';
+import { Observable, catchError, map, throwError } from 'rxjs';
 import Swal from 'sweetalert2';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BooksService {
+  //http headers 
+  httpHeaders = new HttpHeaders().set('Content-Type', 'application/json');
+
   
 
   constructor(private httpclient:HttpClient) { }
@@ -14,6 +17,8 @@ export class BooksService {
   apiurl = 'http://localhost:1010/add/category';
   apiurlu='http://localhost:1010/add/category'
   apiurlus='http://localhost:1010/delete/category'
+
+  apiurlur='http://localhost:1010/edit/category'
 
 
   addCategory(data:any):Observable<any>{
@@ -35,6 +40,31 @@ export class BooksService {
       catchError(this.handleError)
     )
   }
+//Get Single Object Data in Table Manner
+
+/* GetEditCategory(id:any):Observable<any>{
+  let api_url=`${this.apiurlur}`;
+  return this.httpclient.get(api_url+"/"+id,{ observe: 'response', withCredentials: true }).pipe(
+    catchError(this.handleError)
+  )
+} */
+
+GetEditCategory(id:any):Observable<any>{
+  let api_url=`${this.apiurlur}/${id}`
+  return this.httpclient.get(api_url,{headers:this.httpHeaders}).pipe(
+    map((res:any)=>{
+      return res || {};
+
+  }),
+  catchError(this.handleError)
+  )
+}
+
+
+
+
+
+
   // Error
   handleError(error: HttpErrorResponse) {
     let errorMessage = '';
