@@ -13,6 +13,7 @@ export class ViewCategoryComponent implements OnInit {
   userdata:any
   editCategory:any
   processValidation:any
+  editvategoryvalue:any
   constructor(private services:BooksService){}
 
   ngOnInit() {
@@ -20,7 +21,6 @@ export class ViewCategoryComponent implements OnInit {
     this.userdata=result.body
     //console.log(this.userdata)
     })
-
   }
 
   deleteuser(id:any){
@@ -41,29 +41,51 @@ export class ViewCategoryComponent implements OnInit {
           )
         })
       } 
-      
     })
   }
-
   reactiveForm=new FormGroup({
     id:new FormControl(''),
     category: new FormControl('',Validators.required),
     active: new FormControl('',Validators.required)
-
   })
   onEditUser(id:any){
     this.services.GetEditCategory(id).subscribe((result)=>{
-   console.log(result)
-     //this.editCategory=result.body.value
-
+   //console.log(result)
+     this.editCategory=result.body._id
+    this.editvategoryvalue=result.body
     //this.editCategory=result.body.value
-   //  console.log(this.editCategory)
-     //this.reactiveForm.setValue({id:this.editCategory,category:this.result.category,active:this.editCategory.active})
+  //console.log(this.editvategoryvalue)
+   this.reactiveForm.setValue({id:this.editCategory,category:this.editvategoryvalue.category,active:this.editvategoryvalue.active})
+  
     })
 
   }
-  UpdatecategoryForm(){
+
+  onSubmit(){
+
+    console.log("in on submit",this.reactiveForm.value)
 
   }
+  UpdatecategoryForm(){
+    console.log("in update form",this.reactiveForm.value)
+
+
+     this.services.UpdatedCategory(this.reactiveForm.value).subscribe((result)=>{
+
+      if(result.statusText==="OK"){
+        Swal.fire({ text: "Updated Successfully", icon: 'success'}).then(
+
+        )
+ 
+      }else{
+        Swal.fire({ text: "Error", icon: 'error'})
+      }
+  
+
+
+      console.log(result,"In result")
+    }) 
+  }
+
 
 }

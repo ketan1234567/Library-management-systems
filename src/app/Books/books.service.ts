@@ -19,6 +19,7 @@ export class BooksService {
   apiurlus='http://localhost:1010/delete/category'
 
   apiurlur='http://localhost:1010/edit/category'
+  apiurlud='http://localhost:1010/update/category'
 
 
   addCategory(data:any):Observable<any>{
@@ -42,13 +43,21 @@ export class BooksService {
   }
 //Get Single Object Data in Table Manner
 
-/* GetEditCategory(id:any):Observable<any>{
+GetEditCategory(id:any):Observable<any>{
   let api_url=`${this.apiurlur}`;
   return this.httpclient.get(api_url+"/"+id,{ observe: 'response', withCredentials: true }).pipe(
     catchError(this.handleError)
   )
-} */
+} 
+//update category 
+UpdatedCategory(data:any):Observable<any>{
+  let api_url=`${this.apiurlud}`;
+  return this,this.httpclient.put(api_url+"/"+data.id,data, {observe:'response',withCredentials:true}).pipe(
+    catchError(this.handleError)
+  )
 
+}
+/* 
 GetEditCategory(id:any):Observable<any>{
   let api_url=`${this.apiurlur}/${id}`
   return this.httpclient.get(api_url,{headers:this.httpHeaders}).pipe(
@@ -58,7 +67,7 @@ GetEditCategory(id:any):Observable<any>{
   }),
   catchError(this.handleError)
   )
-}
+} */
 
 
 
