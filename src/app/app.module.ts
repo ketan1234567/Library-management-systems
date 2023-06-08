@@ -20,6 +20,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AddBookComponent } from './Books/add-book/add-book.component';
 import { ViewCategoryComponent } from './Books/view-category/view-category.component';
+import { AddAuthorComponent } from './author/add-author/add-author.component';
+import { ViewAuthorComponent } from './author/view-author/view-author.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,9 @@ import { ViewCategoryComponent } from './Books/view-category/view-category.compo
     ModalsComponent,
     NotificationsComponent,
     AddBookComponent,
-    ViewCategoryComponent
+    ViewCategoryComponent,
+    AddAuthorComponent,
+    ViewAuthorComponent
   ],
   imports: [
     BrowserModule,

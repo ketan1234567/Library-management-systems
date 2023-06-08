@@ -13,6 +13,8 @@ import { ModalsComponent } from './modals/modals.component';
 import { FormsComponent } from './forms/forms.component';
 import { AddBookComponent } from './Books/add-book/add-book.component';
 import { ViewCategoryComponent } from './Books/view-category/view-category.component';
+import { AddAuthorComponent } from './author/add-author/add-author.component';
+import { ViewAuthorComponent } from './author/view-author/view-author.component';
 
 const routes: Routes = [
   { path: '', component: DashboardComponent },
@@ -28,6 +30,8 @@ const routes: Routes = [
   { path: 'forms', component: FormsComponent },
   { path: 'add-book', component: AddBookComponent },
   { path: 'view-category', component: ViewCategoryComponent },
+  { path: 'add-author', component: AddAuthorComponent },
+  { path: 'view-author', component: ViewAuthorComponent },
 ];
 
 @NgModule({

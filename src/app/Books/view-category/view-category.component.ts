@@ -9,7 +9,6 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./view-category.component.css']
 })
 export class ViewCategoryComponent implements OnInit {
-
   userdata:any
   editCategory:any
   processValidation:any
@@ -22,7 +21,6 @@ export class ViewCategoryComponent implements OnInit {
     //console.log(this.userdata)
     })
   }
-
   deleteuser(id:any){
     Swal.fire({
       title: 'Are you sure want to remove?',
@@ -74,15 +72,10 @@ export class ViewCategoryComponent implements OnInit {
 
       if(result.statusText==="OK"){
         Swal.fire({ text: "Updated Successfully", icon: 'success'}).then(
-
         )
- 
       }else{
         Swal.fire({ text: "Error", icon: 'error'})
       }
-  
-
-
       console.log(result,"In result")
     }) 
   }

@@ -10,70 +10,44 @@ export class BooksService {
   //http headers 
   httpHeaders = new HttpHeaders().set('Content-Type', 'application/json');
 
-  
-
-  constructor(private httpclient:HttpClient) { }
-  
-  apiurl = 'http://localhost:1010/add/category';
-  apiurlu='http://localhost:1010/add/category'
-  apiurlus='http://localhost:1010/delete/category'
-
-  apiurlur='http://localhost:1010/edit/category'
-  apiurlud='http://localhost:1010/update/category'
+  constructor(private httpclient: HttpClient) { }
+  apiurl = 'http://localhost:1010/category';
 
 
-  addCategory(data:any):Observable<any>{
-    let api_url = `${this.apiurl}`;
+  addCategory(data: any): Observable<any> {
+    let api_url = `${this.apiurl}/create`;
     return this.httpclient.post(api_url, data, { observe: 'response', withCredentials: true }).pipe(
       catchError(this.handleError)
     )
   }
-  
-  viewCategory():Observable<any>{
-    let api_url = `${this.apiurlu}`;
-    return this.httpclient.get(api_url,  { observe: 'response', withCredentials: true }).pipe(
+
+  viewCategory(): Observable<any> {
+    let api_url = `${this.apiurl}/get`;
+    return this.httpclient.get(api_url, { observe: 'response', withCredentials: true }).pipe(
       catchError(this.handleError)
     )
   }
-  deleteCategory(_id:any):Observable<any>{
-    let api_url = `${this.apiurlus}`;
-    return this.httpclient.delete(api_url+"/"+_id,{ observe: 'response', withCredentials: true }).pipe(
+  deleteCategory(_id: any): Observable<any> {
+    let api_url = `${this.apiurl}/delete`;
+    return this.httpclient.delete(api_url + "/" + _id, { observe: 'response', withCredentials: true }).pipe(
       catchError(this.handleError)
     )
   }
-//Get Single Object Data in Table Manner
+  //Get Single Object Data in Table Manner
 
-GetEditCategory(id:any):Observable<any>{
-  let api_url=`${this.apiurlur}`;
-  return this.httpclient.get(api_url+"/"+id,{ observe: 'response', withCredentials: true }).pipe(
-    catchError(this.handleError)
-  )
-} 
-//update category 
-UpdatedCategory(data:any):Observable<any>{
-  let api_url=`${this.apiurlud}`;
-  return this,this.httpclient.put(api_url+"/"+data.id,data, {observe:'response',withCredentials:true}).pipe(
-    catchError(this.handleError)
-  )
-
-}
-/* 
-GetEditCategory(id:any):Observable<any>{
-  let api_url=`${this.apiurlur}/${id}`
-  return this.httpclient.get(api_url,{headers:this.httpHeaders}).pipe(
-    map((res:any)=>{
-      return res || {};
-
-  }),
-  catchError(this.handleError)
-  )
-} */
-
-
-
-
-
-
+  GetEditCategory(id: any): Observable<any> {
+    let api_url = `${this.apiurl}/edit`;
+    return this.httpclient.get(api_url + "/" + id, { observe: 'response', withCredentials: true }).pipe(
+      catchError(this.handleError)
+    )
+  }
+  //update category 
+  UpdatedCategory(data: any): Observable<any> {
+    let api_url = `${this.apiurl}/update`;
+    return this, this.httpclient.put(api_url + "/" + data.id, data, { observe: 'response', withCredentials: true }).pipe(
+      catchError(this.handleError)
+    )
+  }
   // Error
   handleError(error: HttpErrorResponse) {
     let errorMessage = '';
