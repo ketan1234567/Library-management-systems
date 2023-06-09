@@ -18,10 +18,12 @@ import { ModalsComponent } from './modals/modals.component';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { AddBookComponent } from './Books/add-book/add-book.component';
-import { ViewCategoryComponent } from './Books/view-category/view-category.component';
+import { AddBookComponent } from './Category/add-book/add-book.component';
+import { ViewCategoryComponent } from './Category/view-category/view-category.component';
 import { AddAuthorComponent } from './author/add-author/add-author.component';
 import { ViewAuthorComponent } from './author/view-author/view-author.component';
+import { AddBooksComponent } from './Books/add-books/add-books.component';
+import { ViewBooksComponent } from './Books/view-books/view-books.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +44,9 @@ import { ViewAuthorComponent } from './author/view-author/view-author.component'
     AddBookComponent,
     ViewCategoryComponent,
     AddAuthorComponent,
-    ViewAuthorComponent
+    ViewAuthorComponent,
+    AddBooksComponent,
+    ViewBooksComponent
   ],
   imports: [
     BrowserModule,

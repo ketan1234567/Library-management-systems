@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BooksService } from '../Books/books.service';
+import { BooksService } from '../Category/books.service';
 import { Observable, catchError, throwError } from 'rxjs';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import Swal from 'sweetalert2';
@@ -20,6 +20,24 @@ export class AuthorService {
   viewAuthor(): Observable<any> {
     let api_url = `${this.apiurl}/get`;
     return this.httpclient.get(api_url,  { observe: 'response', withCredentials: true }).pipe(
+      catchError(this.handleError)
+    )
+  }
+  editAuthor(id:any){
+    let api_url=`${this.apiurl}/edit`;
+    return this.httpclient.get(api_url+"/"+id ,{observe:'response',withCredentials:true}).pipe(
+      catchError(this.handleError)
+    )
+  }
+  UpdatedAuthor(data:any):Observable<any>{
+    let api_url=`${this.apiurl}/update`;
+    return this.httpclient.put(api_url+"/"+data.id,data,{observe:'response',withCredentials:true}).pipe(
+      catchError(this.handleError)
+    )
+  }
+  deleteAuthor(id:any):Observable<any>{
+    let api_url=`${this.apiurl}/delete`;
+    return this.httpclient.delete(api_url+"/"+id,{observe:'response',withCredentials:true}).pipe(
       catchError(this.handleError)
     )
   }
