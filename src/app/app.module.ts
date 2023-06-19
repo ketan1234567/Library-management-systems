@@ -24,6 +24,8 @@ import { AddAuthorComponent } from './author/add-author/add-author.component';
 import { ViewAuthorComponent } from './author/view-author/view-author.component';
 import { AddBooksComponent } from './Books/add-books/add-books.component';
 import { ViewBooksComponent } from './Books/view-books/view-books.component';
+import { IssueNewBooksComponent } from './issue-Book/issue-new-books/issue-new-books.component';
+import { IssueViewBooksComponent } from './issue-Book/issue-view-books/issue-view-books.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +48,9 @@ import { ViewBooksComponent } from './Books/view-books/view-books.component';
     AddAuthorComponent,
     ViewAuthorComponent,
     AddBooksComponent,
-    ViewBooksComponent
+    ViewBooksComponent,
+    IssueNewBooksComponent,
+    IssueViewBooksComponent
   ],
   imports: [
     BrowserModule,

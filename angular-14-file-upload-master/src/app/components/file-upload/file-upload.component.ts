@@ -1,41 +1,29 @@
-import { HttpEventType, HttpResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { FileUploadService } from '../file-upload.service';
+import { HttpEventType, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { FileUploadService } from 'src/app/services/file-upload.service';
 
 @Component({
-  selector: 'app-add-books',
-  templateUrl: './add-books.component.html',
-  styleUrls: ['./add-books.component.css']
+  selector: 'app-file-upload',
+  templateUrl: './file-upload.component.html',
+  styleUrls: ['./file-upload.component.css']
 })
-export class AddBooksComponent implements OnInit {
+export class FileUploadComponent implements OnInit {
   selectedFiles?: FileList;
   currentFile?: File;
   progress = 0;
   message = '';
+
   fileInfos?: Observable<any>;
-  constructor(private uploadService:FileUploadService ){}
+
+  constructor(private uploadService: FileUploadService) {}
+
   ngOnInit(): void {
     this.fileInfos = this.uploadService.getFiles();
   }
-  AddBooks(){
-    console.log(this.reactiveForm.value)
 
-  }
-
-  reactiveForm=new FormGroup({
-    book_name:new FormControl('',Validators.required),
-    author_name:new FormControl('',Validators.required),
-    price:new FormControl('',Validators.required),
-    category:new FormControl('',Validators.required),
-    isbn_number:new FormControl('',Validators.required)
-  })
-
-  selectFile(event:any):void{
+  selectFile(event: any): void {
     this.selectedFiles = event.target.files;
-    console.log(this.selectedFiles);
-    
   }
 
   upload(): void {
@@ -74,5 +62,4 @@ export class AddBooksComponent implements OnInit {
       this.selectedFiles = undefined;
     }
   }
-
 }
