@@ -7,3 +7,68 @@ Interview Question
 
 
 https://www.loginradius.com/blog/engineering/guest-post/nodejs-authentication-guide/ all check login data 
+
+20-06-2023
+
+Login ID: 100498
+
+Password: Gauresh@100417
+
+
+http://216.10.246.48/Learning-and-Development/production/
+
+	0	101496	Vijay
+	12298	Akshay	Savalekar
+	12391	Gauresh	Gawas
+	18485	Siddharth Vijay Sagar	-
+	18486	Atul Malvankar	-
+	18488	Shristi Gupta	-
+	18490	Sumer Deenadayalan Travaidlan	-
+	18491	Farhan Rafique Shaikh	-
+	18493	Swapnil Tulsidas Parab	-
+	18494   Shekhar Bhaskar Kamble
+
+http://216.10.246.48/Learning-and-Development/production/Add_multiple_emp.php?text1=on,0,12298,12391,18485,18486,18488,18490,18491,18493,18494&text2=4&text3=38
+
+http://216.10.246.48/Learning-and-Development/production/Exam_List.php
+
+http://216.10.246.48/Learning-and-Development/production/Add_multiple_emp.php?text1=0,12298,12391,18485,18486,18488,18490,18491,18493,18494&text2=4&text3=38
+
+http://216.10.246.48/Learning-and-Development/production/Add_multiple_emp.php?text1=0,12298,12391,18485,18486,18488,18490,18491,18493,18494&text2=4&text3=38
+
+imp site icheck
+https://www.jqueryscript.net/demo/jQuery-Plugin-For-Beautifying-Checkboxes-Radio-Buttons-iCheck/
+
+
+// code I added
+
+      $(document).ready(function () {
+        $(document).on('ifChecked', '#check-alltop', function (event) {
+          console.log(this);
+          $('input').iCheck('check');
+       
+        })
+   $(document).on('ifUnchecked', '#check-alltop', function () {
+console.log(this);
+$('input').iCheck('uncheck')
+
+
+     })
+});
+
+ // for add multiple
+
+        const btn = document.querySelector('#addmulti');
+        btn.addEventListener('click', (event) => {
+          // var fdt=20;
+          var ed = getSelectedCheckboxValues('check-all');
+          ed=ed .filter(item => item !== "on")
+          alert("ketan");
+          // var ed = ["1", "2", "3"];
+          var gd = <?php echo $gr_id;?>;
+          var exdd = <?php echo $ex_id;?>;
+          window.location.href = "http://216.10.246.48/Learning-and-Development/production/Add_multiple_emp.php?text1="+ed+"&text2="+gd+"&text3="+exdd;
+        });
+
+
+Employee not Registered for exam.
