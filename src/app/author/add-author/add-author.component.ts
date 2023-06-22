@@ -27,7 +27,11 @@ export class AddAuthorComponent implements OnInit {
       const data=this.router
       this.service.addAuthor(this.reactiveForm.value).subscribe((result)=>{
         if(result.statusText==="OK"){
-          Swal.fire({ text: result.statusText, icon: 'success'}).then(function (result) {data.navigate(['/view-author'])})
+          Swal.fire({ text: result.statusText, icon: 'success'})
+          .then(function (result) 
+          
+          {data.navigate(['/view-author'])}
+          )
         }else{
           Swal.fire({ text: "Error", icon: 'error'}).then(function (result) {data.navigate(['/tables'])})
         }

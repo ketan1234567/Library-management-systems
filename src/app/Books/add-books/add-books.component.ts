@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { FileUploadService } from '../file-upload.service';
 import { Observable } from 'rxjs';
+import Swal from 'sweetalert2';
+import { Route, Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-books',
@@ -15,7 +17,7 @@ export class AddBooksComponent implements OnInit {
   progress = 0;
   message = '';
   fileInfos?: Observable<any>;
-  constructor(private uploadService:FileUploadService ){}
+  constructor(private uploadService:FileUploadService,private router:Router ){}
   ngOnInit(): void {
     this.fileInfos = this.uploadService.getFiles();
   }
@@ -47,7 +49,10 @@ export class AddBooksComponent implements OnInit {
       if (file) {
         this.currentFile = file;
 
-        this.uploadService.upload(this.currentFile).subscribe({
+        this.uploadService.upload(this.currentFile).subscribe(
+          
+          {
+
           next: (event: any) => {
             if (event.type === HttpEventType.UploadProgress) {
               this.progress = Math.round((100 * event.loaded) / event.total);
@@ -68,7 +73,20 @@ export class AddBooksComponent implements OnInit {
 
             this.currentFile = undefined;
           },
+
+          
         });
+        const data=this.router
+        if(this.currentFile){
+          Swal.fire({ text: "Successfully Submit", icon: 'success'})
+          .then(function (result) 
+          
+          {data.navigate(['/view-books'])}
+          )
+        }else{
+          Swal.fire({ text: "Error", icon: 'error'}).then(function (result) {data.navigate(['/tables'])})
+        }
+    
       }
 
       this.selectedFiles = undefined;

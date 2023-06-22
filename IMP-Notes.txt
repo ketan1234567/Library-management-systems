@@ -37,7 +37,8 @@ http://216.10.246.48/Learning-and-Development/production/Add_multiple_emp.php?te
 http://216.10.246.48/Learning-and-Development/production/Add_multiple_emp.php?text1=0,12298,12391,18485,18486,18488,18490,18491,18493,18494&text2=4&text3=38
 
 imp site icheck
-https://www.jqueryscript.net/demo/jQuery-Plugin-For-Beautifying-Checkboxes-Radio-Buttons-iCheck/
+1)https://www.jqueryscript.net/demo/jQuery-Plugin-For-Beautifying-Checkboxes-Radio-Buttons-iCheck/
+2)https://www.tutsmake.com/file-upload-in-mongodb-using-node-js/
 
 
 // code I added
@@ -70,5 +71,18 @@ $('input').iCheck('uncheck')
           window.location.href = "http://216.10.246.48/Learning-and-Development/production/Add_multiple_emp.php?text1="+ed+"&text2="+gd+"&text3="+exdd;
         });
 
+alt+shift+a
+cntrl+/
 
-Employee not Registered for exam.
+BUILD LP 2023 Q2 Unisys DWS 2 Touch CS + 2 Qualifying Questions
+
+LP-BUILD-2022-Q3-Unisys-CAI-CS-QQ-1
+
+LP-BUILD-2023-Q2-Unisys-DWS-CS-1
+
+Apply data insights to shape workplace strategies 
+Optimize employee performance by proactively resolving tech issues 
+Modernize security policies to meet requirements of the hybrid workplace 
+
+
+LP-BUILD-2023-Q2-Unisys-DWS-CS-2nd-touch-1
