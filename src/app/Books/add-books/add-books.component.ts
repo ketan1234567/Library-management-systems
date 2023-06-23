@@ -68,13 +68,12 @@ export class AddBooksComponent implements OnInit {
             if (err.error && err.error.message) {
               this.message = err.error.message;
             } else {
-              this.message = 'Could not upload the file!';
+              this.message = 'Could not upload the file!';  
             }
 
             this.currentFile = undefined;
           },
 
-          
         });
         const data=this.router
         if(this.currentFile){
