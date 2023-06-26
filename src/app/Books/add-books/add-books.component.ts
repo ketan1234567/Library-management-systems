@@ -36,7 +36,8 @@ export class AddBooksComponent implements OnInit {
 
   selectFile(event:any):void{
     this.selectedFiles = event.target.files;
-    console.log(this.selectedFiles);
+    //console.log(this.selectedFiles);
+    console.log(this.reactiveForm)
     
   }
 

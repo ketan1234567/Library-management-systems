@@ -16,9 +16,12 @@ image:any
   ) {}
   ngOnInit() {
 this.service.getFiles().subscribe((result)=>{
-this.image=URL.createObjectURL(result)
+
+//this.image=URL.createObjectURL(result)
+this.image = URL.createObjectURL(result);
 })
   }
+  
 
   onEditUser(){
 
