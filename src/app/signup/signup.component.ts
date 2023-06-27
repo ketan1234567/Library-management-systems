@@ -14,17 +14,27 @@ export class SignupComponent implements OnInit {
   constructor(private service:SiginService,private route:Router) { }
   processValidation:any
   ngOnInit(): void {
+    this.generateUUIDV4()
   }
+  
 
 
 
   reactiveForm=new FormGroup({
-    username:new FormControl('',Validators.required),
+    fullname:new FormControl('',Validators.required),
+    mobile:new FormControl('',Validators.required),
     email:new FormControl('',Validators.required),
     password:new FormControl('',Validators.required)
   })
 
+   generateUUIDV4() {
+    // http://www.ietf.org/rfc/rfc4122.txt
 
+    const uuid = crypto.randomUUID();
+    console.log(uuid);
+    
+    return uuid
+  }
   signUp(){
     this.processValidation=true
     if(this.reactiveForm.valid){

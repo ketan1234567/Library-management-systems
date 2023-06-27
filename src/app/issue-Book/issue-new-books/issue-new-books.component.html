@@ -1,1 +1,32 @@
-<p>issue-new-books works!</p>
+<div class="row">
+    <div class="col-12 mb-4 mt-5">
+      <div class="card border-0 shadow components-section">
+        <div class="card-body">
+          <form [formGroup]="reactiveForm" (ngSubmit)="addIssueBooks()">
+          <div class="row mb-4">
+             
+            <div class="col-lg-4 col-sm-6">
+              <div class="mb-4">
+                <label for="StudentId">StudentId</label>
+                <input type="text" class="form-control" id="StudentId" formControlName="StudentId">
+              </div>
+              <div class="mb-4">
+                <label for="isbn-number">ISBN Number or Book Title</label>
+                <input type="text" class="form-control" id="price" formControlName="isbnnumber">
+              </div>
+     
+            </div>
+            <div class="col-lg-4 col-sm-6">
+
+
+
+       
+            </div>
+            <div class="mb-3 ">
+             <button class="btn btn-tertiary" type="submit" >Issue Books</button>
+            </div>
+          </div>
+       </form>
+        </div>
+      </div>
+    </div>

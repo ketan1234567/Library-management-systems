@@ -5,6 +5,8 @@ import { FileUploadService } from '../file-upload.service';
 import { Observable } from 'rxjs';
 import Swal from 'sweetalert2';
 import { Route, Router } from '@angular/router';
+import { BooksService } from 'src/app/Category/books.service';
+import { AuthorService } from 'src/app/author/author.service';
 
 @Component({
   selector: 'app-add-books',
@@ -12,13 +14,25 @@ import { Route, Router } from '@angular/router';
   styleUrls: ['./add-books.component.css']
 })
 export class AddBooksComponent implements OnInit {
+  categoryData:any
+  AuthorData:any
   selectedFiles?: FileList;
   currentFile?: File;
   progress = 0;
   message = '';
   fileInfos?: Observable<any>;
-  constructor(private uploadService:FileUploadService,private router:Router ){}
-  ngOnInit(): void {
+  constructor(private uploadService:FileUploadService,private router:Router,private serviceB:BooksService,private serviceAU:AuthorService){}
+  ngOnInit() {
+
+
+    this.serviceAU.viewAuthor().subscribe((result)=>{
+      this.AuthorData=result.body;
+     // console.log(this.AuthorData)
+    })
+    this.serviceB.viewCategory().subscribe((result)=>{
+      //console.log(result);
+      this.categoryData=result.body
+    })
     this.fileInfos = this.uploadService.getFiles();
   }
   AddBooks(){
@@ -28,7 +42,7 @@ export class AddBooksComponent implements OnInit {
 
   reactiveForm=new FormGroup({
     book_name:new FormControl('',Validators.required),
-    author_name:new FormControl('',Validators.required),
+    author:new FormControl('',Validators.required),
     price:new FormControl('',Validators.required),
     category:new FormControl('',Validators.required),
     isbn_number:new FormControl('',Validators.required)
