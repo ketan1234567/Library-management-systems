@@ -9,7 +9,7 @@ import Swal from 'sweetalert2';
 export class SiginService {
 
   constructor(private httpclient: HttpClient) { }
-
+  
   apiurl = 'http://localhost:1010/signup-data/data'
   apiurl_1 = 'http://localhost:1010/login-data/login'
 
@@ -18,8 +18,6 @@ export class SiginService {
     return this.httpclient.post(api_url, data, { observe: 'response', withCredentials: true }).pipe(
       catchError(this.handleError)
     )
-
-
   }
   SignUp(data: any): Observable<any> {
     let api_url = `${this.apiurl}`;
@@ -43,6 +41,4 @@ export class SiginService {
       errorMessage;
     });
   }
-
-
 }
