@@ -3,11 +3,15 @@ import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  selector: 'app-navbar',
+  templateUrl: './navbar.component.html',
+  styleUrls: ['./navbar.component.css']
 })
-export class DashboardComponent implements OnInit {
+export class NavbarComponent implements OnInit {
+  ngOnInit() {
+    this.AdminDetails()
+    this.UserDetails()
+  }
   userDetails:any
   userData:any
   SignupDetails:any;
@@ -16,14 +20,7 @@ export class DashboardComponent implements OnInit {
   userDataAdmin:any
   userRole:any;
   adminRole:any
-
-
-  constructor(private router: Router) { }
-
-  ngOnInit(): void {
-    this.AdminDetails()
-    this.UserDetails()
-  }
+  constructor(private router:Router){}
   logout() {
     this.delete_cookie("token");
     Swal.fire({
@@ -55,4 +52,5 @@ export class DashboardComponent implements OnInit {
     
 
   }
+
 }

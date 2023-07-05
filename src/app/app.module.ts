@@ -26,6 +26,7 @@ import { AddBooksComponent } from './Books/add-books/add-books.component';
 import { ViewBooksComponent } from './Books/view-books/view-books.component';
 import { IssueNewBooksComponent } from './issue-Book/issue-new-books/issue-new-books.component';
 import { IssueViewBooksComponent } from './issue-Book/issue-view-books/issue-view-books.component';
+import { NavbarComponent } from './navbar/navbar/navbar.component';
 
 
 @NgModule({
@@ -52,6 +53,7 @@ import { IssueViewBooksComponent } from './issue-Book/issue-view-books/issue-vie
     ViewBooksComponent,
     IssueNewBooksComponent,
     IssueViewBooksComponent,
+    NavbarComponent,
 
   ],
   imports: [

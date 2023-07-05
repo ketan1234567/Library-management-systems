@@ -7,6 +7,12 @@ import Swal from 'sweetalert2';
   providedIn: 'root'
 })
 export class SiginService {
+  adminDetails:any
+  userDataAdmin:any
+  adminRole:any
+  userDetails:any
+  userData:any
+  userRole:any
 
   constructor(private httpclient: HttpClient) { }
   
@@ -40,5 +46,24 @@ export class SiginService {
     return throwError(() => {
       errorMessage;
     });
+  }
+
+  AdminDetails (){
+    
+    
+    this.adminDetails = atob(document.cookie.split('.')[1]);
+   this.userDataAdmin=JSON.parse(this.adminDetails).email;
+   this.adminRole=JSON.parse(this.adminDetails).role;
+  //console.log(this.userDataAdmin);
+  
+  }
+  UserDetails(){
+        
+    this.userDetails = atob(document.cookie.split('.')[1]);
+   this.userData=JSON.parse(this.userDetails).fullname;
+   this.userRole=JSON.parse(this.userDetails).role;
+    console.log(this.userData);
+    
+
   }
 }
