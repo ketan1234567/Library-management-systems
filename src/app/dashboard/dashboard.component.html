@@ -1,3 +1,7 @@
+
+<style>
+
+</style>
 <nav class="navbar navbar-top navbar-expand navbar-dashboard navbar-dark ps-0 pe-2 pb-0" >
     <div class="container-fluid px-0">
        <div class="d-flex justify-content-between w-100" id="navbarSupportedContent">
@@ -194,7 +198,7 @@
        </div>
     </div>
  </div>
- <div class="row">
+ <div class="row"  *ngIf="userRole">
    <!----<div class="col-12 mb-4">
        <div class="card bg-yellow-100 border-0 shadow">
           <div class="card-header d-sm-flex flex-row align-items-center flex-0">
@@ -210,7 +214,7 @@
           </div>
        </div>
     </div>-->
-    <div class="col-12 col-sm-6 col-xl-4 mb-4">
+    <div class="col-12 col-sm-6 col-xl-4 mb-4" Customers >
        <div class="card border-0 shadow">
           <div class="card-body">
              <div class="row d-block d-xl-flex align-items-center">
@@ -413,7 +417,7 @@
                 </div>
              </div>
           </div>-->
-          <div class="col-12 col-xxl-6 mb-4">
+          <div class="col-12 col-xxl-6 mb-4"  *ngIf="userRole">
              <div class="card border-0 shadow">
                 <div class="card-header border-bottom d-flex align-items-center justify-content-between">
                    <h2 class="fs-5 fw-bold mb-0">Team members</h2>
@@ -505,7 +509,7 @@
                 </div>
              </div>
           </div>
-          <div class="col-12 col-xxl-6 mb-4">
+          <div class="col-12 col-xxl-6 mb-4"   *ngIf="userRole">
              <div class="card border-0 shadow">
                 <div class="card-header border-bottom d-flex align-items-center justify-content-between">
                    <h2 class="fs-5 fw-bold mb-0">Progress track</h2>
@@ -595,7 +599,7 @@
     </div>
     <div class="col-12 col-xl-4">
        <div class="col-12 px-0 mb-4">
-          <div class="card border-0 shadow">
+          <div class="card border-0 shadow" >
              <div class="card-header d-flex flex-row align-items-center flex-0 border-bottom">
                 <div class="d-block">
                    <div class="h6 fw-normal text-gray mb-2">Total orders</div>
