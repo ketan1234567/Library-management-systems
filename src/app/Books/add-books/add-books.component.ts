@@ -50,9 +50,8 @@ export class AddBooksComponent implements OnInit {
 
   selectFile(event:any):void{
     this.selectedFiles = event.target.files;
-    //console.log(this.selectedFiles);
-    console.log(this.reactiveForm)
-    
+    console.log(this.selectedFiles);
+    //console.log(this.reactiveForm)
   }
 
   upload(): void {
@@ -63,8 +62,11 @@ export class AddBooksComponent implements OnInit {
 
       if (file) {
         this.currentFile = file;
+  
+        this.uploadService.upload(this.currentFile,this.reactiveForm.value).subscribe(
 
-        this.uploadService.upload(this.currentFile).subscribe(
+          
+          
           
           {
 

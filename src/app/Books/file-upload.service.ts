@@ -10,11 +10,11 @@ export class FileUploadService {
   private baseUrl = 'http://localhost:1010';
   public image: string | undefined;
   constructor(private http:HttpClient, private sanitizer: DomSanitizer) { }
-  upload(file: any): Observable<HttpEvent<any>> {
+  upload(file: any,data:any): Observable<HttpEvent<any>> {
     const formData: FormData = new FormData();
-
     formData.append('file', file);
-
+    formData.append('data1', data);
+    //console.log(formData);
     const req = new HttpRequest('POST', `${this.baseUrl}/upload`, formData, {
       reportProgress: true,
       responseType: 'json'
