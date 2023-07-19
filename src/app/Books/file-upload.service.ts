@@ -11,18 +11,24 @@ export class FileUploadService {
   public image: string | undefined;
   constructor(private http:HttpClient, private sanitizer: DomSanitizer) { }
   upload(file: any,data:any): Observable<HttpEvent<any>> {
-    const formData: FormData = new FormData();
-    formData.append('file', file);
-    formData.append('data1', data);
-    //console.log(formData);
-    const req = new HttpRequest('POST', `${this.baseUrl}/upload`, formData, {
+   const formData: FormData = new FormData();
+   console.log(data);
+   
+     formData.append('file', file);
+     
+   formData.append('data', JSON.stringify(data));
+    
+    const req = new HttpRequest('POST', `${this.baseUrl}/upload`, formData ,{
       reportProgress: true,
       responseType: 'json'
-    });
+    }); 
     return this.http.request(req);
   }
 
   getFiles(): Observable<any> {
     return this.http.get(`${this.baseUrl}/files`,{responseType: 'blob' })
+  }
+  getAllData(): Observable<any> {
+    return this.http.get(`${this.baseUrl}/`)
   }
 }

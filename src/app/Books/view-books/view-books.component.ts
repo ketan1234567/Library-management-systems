@@ -21,6 +21,8 @@ image:any
 this.service.getFiles().subscribe((result)=>{
 //this.image=URL.createObjectURL(result)
 this.image = URL.createObjectURL(result);
+console.log(this.image);
+
 })
   }
   onEditUser(){

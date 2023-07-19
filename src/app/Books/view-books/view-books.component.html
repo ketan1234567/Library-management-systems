@@ -72,14 +72,24 @@
               <thead class="thead-light">
                  <tr>
              
+                    <th class="border-0">Book_Name</th>
+                    <th class="border-0">Author</th>
+                    <th class="border-0">price</th>
+                    <th class="border-0">category</th>
+                    <th class="border-0">isbn_number</th>
                     <th class="border-0">Images</th>
-
                     <th class="border-0">Action</th>
           
                  </tr>
               </thead>
               <tbody><tr>
-                 <!-- <tr *ngFor="let u of image"> -->
+                <tr *ngFor="let u of image"> 
+                  <td>{{u._id}}</td>
+                  <td>{{u.book_name}}</td>
+                  <td>{{u.author}}</td>
+                  <td>{{u.price}}</td>
+                  <td>{{u.category}}</td>
+                  <td>{{u.isbn_number}}</td>
                    <td>
                      <img src={{image}} width="30%" height="50%"></td>
                 
