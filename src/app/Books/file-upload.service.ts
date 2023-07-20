@@ -1,7 +1,8 @@
-import { HttpClient, HttpEvent, HttpRequest } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpEvent, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
-import { Observable, catchError, retry, tap } from 'rxjs';
+import { Observable, catchError, retry, tap, throwError } from 'rxjs';
+import Swal from 'sweetalert2';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +10,7 @@ import { Observable, catchError, retry, tap } from 'rxjs';
 export class FileUploadService {
   private baseUrl = 'http://localhost:1010';
   public image: string | undefined;
+  apiurl: any;
   constructor(private http:HttpClient, private sanitizer: DomSanitizer) { }
   upload(file: any,data:any): Observable<HttpEvent<any>> {
    const formData: FormData = new FormData();
@@ -29,6 +31,29 @@ export class FileUploadService {
     return this.http.get(`${this.baseUrl}/files`,{responseType: 'blob' })
   }
   getAllData(): Observable<any> {
-    return this.http.get(`${this.baseUrl}/`)
+    return this.http.get(`${this.baseUrl}/allDataImages`)
   }
+  deleteAllData(_id:any){
+    let baseUrl = `${this.baseUrl}/delete`;
+    return this.http.delete(baseUrl + "/" + _id, { observe: 'response', withCredentials: true }).pipe(
+      catchError(this.handleError)
+    )
+  }
+    // Error
+    handleError(error: HttpErrorResponse) {
+      let errorMessage = '';
+      if (error.error instanceof ErrorEvent) {
+        // Handle client error
+        errorMessage = error.error.message;
+      } else {
+        // Handle server error
+        errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+      }
+      console.log();
+      Swal.fire({ text: error.error.message, icon: 'error' })
+      return throwError(() => {
+        errorMessage;
+      });
+    }
+
 }

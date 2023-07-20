@@ -28,6 +28,8 @@ export class BooksService {
     )
   }
   deleteCategory(_id: any): Observable<any> {
+
+    
     let api_url = `${this.apiurl}/delete`;
     return this.httpclient.delete(api_url + "/" + _id, { observe: 'response', withCredentials: true }).pipe(
       catchError(this.handleError)
