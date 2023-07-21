@@ -12,14 +12,16 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./view-books.component.css']
 })
 export class ViewBooksComponent implements OnInit {
-categoryData:any
-image:any
+  categoryData:any
+  AuthorData:any
+  image: any;
   constructor(
     private readonly domSanitizer: DomSanitizer,
     private readonly service: FileUploadService,
     private serviceB:BooksService
   ) {}
   ngOnInit() {
+
     this.service.getAllData().subscribe((result)=>{
    this.image=result
    console.log(result);
@@ -70,6 +72,9 @@ image:any
   }
   upload(){
     
+  }
+  AddbookImages(){
+
   }
 
 }
