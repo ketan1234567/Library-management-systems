@@ -8,6 +8,9 @@ import Swal from 'sweetalert2';
   providedIn: 'root'
 })
 export class FileUploadService {
+  viewAuthor() {
+    throw new Error('Method not implemented.');
+  }
   private baseUrl = 'http://localhost:1010';
   public image: string | undefined;
   apiurl: any;
@@ -26,7 +29,6 @@ export class FileUploadService {
     }); 
     return this.http.request(req);
   }
-
   getFiles(): Observable<any> {
     return this.http.get(`${this.baseUrl}/files`,{responseType: 'blob' })
   }
@@ -36,6 +38,12 @@ export class FileUploadService {
   deleteAllData(_id:any){
     let baseUrl = `${this.baseUrl}/delete`;
     return this.http.delete(baseUrl + "/" + _id, { observe: 'response', withCredentials: true }).pipe(
+      catchError(this.handleError)
+    )
+  }
+  GetEditBooks(id: any): Observable<any> {
+    let api_url = `${this.baseUrl}/edit`;
+    return this.http.get(api_url + "/" + id, { observe: 'response', withCredentials: true }).pipe(
       catchError(this.handleError)
     )
   }

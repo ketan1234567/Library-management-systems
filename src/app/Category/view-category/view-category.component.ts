@@ -54,7 +54,7 @@ export class ViewCategoryComponent implements OnInit {
     //this.editCategory=result.body.value
   //console.log(this.editvategoryvalue)
    this.reactiveForm.setValue({id:this.editCategory,category:this.editvategoryvalue.category,active:this.editvategoryvalue.active})
-  
+
     })
 
   }

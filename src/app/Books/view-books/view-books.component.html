@@ -116,7 +116,7 @@
                    <td>
                      <img src="http://localhost:1010/files/{{u.data}}" width="auto" height="auto"></td>
                    <td> 
-                      <button class="btn btn-success" type="button" (click)="onEditUser()" data-bs-toggle="modal" data-bs-target="#modal-form-signup">Edit</button>
+                      <button class="btn btn-success" type="button" (click)="onEditUser(u._id)" data-bs-toggle="modal" data-bs-target="#modal-form-signup">Edit</button>
                       &nbsp;
                       <button class="btn btn-danger" type="button" (click)="deleteuser(u._id)">delete</button> 
                    </td>
