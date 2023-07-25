@@ -26,6 +26,8 @@ export class ViewBooksComponent implements OnInit {
 
   ) {}
   ngOnInit() {
+    this.AddbookImages()
+
     this.serviceAu.viewAuthor().subscribe((result)=>{
       this.AuthorData=result.body;
      // console.log(this.AuthorData)
@@ -55,15 +57,36 @@ export class ViewBooksComponent implements OnInit {
   onEditUser(_id:any){
    // alert(id)
       this.service.GetEditBooks(_id).subscribe((result)=>{
-      console.log(result);
+      //console.log(result);
       this.editBooks=result.body._id
       this.editBooksValue=result.body
-      this.reactiveForm.setValue({id:this.editBooks,book_name:this.editBooksValue.book_name,category:this.editBooksValue.category,price:this.editBooksValue.price,author:this.editBooksValue.author,isbn_number:this.editBooksValue.isbn_number})
+      this.reactiveForm.setValue({id:this.editBooks,book_name:this.editBooksValue.book_name,author:this.editBooksValue.author,price:this.editBooksValue.price,category:this.editBooksValue.category,isbn_number:this.editBooksValue.isbn_number})
 
     })
   }
-  AddDataImages(){
+
+  AddbookImages(){
+  console.log(this.reactiveForm.value);
   }
+  UpdateAllDataImages(){
+    //console.log("in update form",this.reactiveForm.value)
+    this.service.UpdatedBooks(this.reactiveForm.value).subscribe((result)=>{
+
+      if(result.statusText==="OK"){
+        Swal.fire({ text: "Updated Successfully", icon: 'success'}).then(
+        )
+      }else{
+        Swal.fire({ text: "Error", icon: 'error'})
+      }
+      //console.log(result,"In result");
+
+
+    }) 
+    this.ngOnInit() 
+    
+
+  }
+
   deleteuser(id:any){
     Swal.fire({
       title: 'Are you sure want to remove?',
@@ -87,14 +110,8 @@ export class ViewBooksComponent implements OnInit {
     console.log(id)
   }
 
-  UpdateAllDataImages(){
 
-  }
-  upload(){
-    
-  }
-  AddbookImages(){
 
-  }
+
 
 }

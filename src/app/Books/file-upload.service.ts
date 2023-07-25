@@ -47,6 +47,14 @@ export class FileUploadService {
       catchError(this.handleError)
     )
   }
+  UpdatedBooks(data:any):Observable<any>{
+    let api_url=`${this.baseUrl}/update`;
+    return this.http.put(api_url+"/"+data.id,data,{observe:'response',withCredentials:true}).pipe(
+      catchError(this.handleError)
+    )
+  }
+
+
     // Error
     handleError(error: HttpErrorResponse) {
       let errorMessage = '';
