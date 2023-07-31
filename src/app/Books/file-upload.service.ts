@@ -14,7 +14,10 @@ export class FileUploadService {
   private baseUrl = 'http://localhost:1010';
   public image: string | undefined;
   apiurl: any;
-  constructor(private http:HttpClient, private sanitizer: DomSanitizer) { }
+  constructor(private http:HttpClient, private sanitizer: DomSanitizer) {
+    //console.log("This is File Upload Services + Constructor");
+    
+   }
   upload(file: any,data:any): Observable<HttpEvent<any>> {
    const formData: FormData = new FormData();
    console.log(data);

@@ -14,27 +14,33 @@ export class SignupComponent implements OnInit {
   constructor(private service:SiginService,private route:Router) { }
   processValidation:any
   ngOnInit(): void {
-    this.generateUUIDV4()
+    this.generateCode()
   }
   
 
 
 
   reactiveForm=new FormGroup({
+    SID:new FormControl(),
     fullname:new FormControl('',Validators.required),
     mobile:new FormControl('',Validators.required),
     email:new FormControl('',Validators.required),
-    password:new FormControl('',Validators.required)
+    password:new FormControl('',Validators.required),
+    status:new FormControl(),
   })
 
-   generateUUIDV4() {
-    // http://www.ietf.org/rfc/rfc4122.txt
 
-    const uuid = crypto.randomUUID();
-    console.log(uuid);
-    
-    return uuid
-  }
+   generateCode() {
+    var result           = '';
+    var characters       = '123456789';
+    var charactersLength = characters.length;
+   // console.log(charactersLength);
+    for ( var i = 0; i < charactersLength; i++ ) {
+       result += characters.charAt(Math.floor(Math.random() * 6));
+    }
+    //console.log(result+"resulttttttttttttttttttt");
+    return result;
+}
   signUp(){
     this.processValidation=true
     if(this.reactiveForm.valid){
@@ -46,8 +52,6 @@ export class SignupComponent implements OnInit {
             data.navigate(['/sign-in'])
           }
       })
-      
-       
         })
 
     }
