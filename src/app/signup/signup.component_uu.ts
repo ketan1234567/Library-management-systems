@@ -46,8 +46,10 @@ export class SignupComponent implements OnInit {
     this.processValidation=true
     if(this.reactiveForm.valid){
     this.reactiveForm.value.SID=this.generateCode()
+    this.reactiveForm.value.status="inactive";
       this.service.SignUp(this.reactiveForm.value).subscribe((result)=>{
         console.log(result);
+
         const data=this.route
         Swal.fire({ text: "signUp Succfully", icon: 'success'}).then(function (result) {
           if (true) {

@@ -1,0 +1,41 @@
+
+<app-navbar></app-navbar>
+ <div class="card border-0 shadow mb-4 mt-5">
+     <div class="card-body">
+        <div class="table-responsive">
+           <table class="table table-centered table-nowrap mb-0 rounded">
+              <thead class="thead-light">
+                 <tr>
+                    <th class="border-0 rounded-start">SID</th>
+                    <th class="border-0">studentName</th>
+                    <th class="border-0">mobile</th>
+                    <th class="border-0">Reg Date</th>
+                    <th class="border-0">status</th>
+                    <th class="border-0">Actions</th>
+          
+                 </tr>
+              </thead>
+              <tbody>
+                 <tr *ngFor="let u of viewData">
+
+                   <td>{{u.SID}}</td>
+                   <td>{{u.fullname}}</td>
+                   <td>{{u.mobile}}</td>
+                    <td>{{ u.createdAt | date: 'dd/MM/yyyy hh:mm a' }}</td>
+                   <td>{{u.status}}</td>
+                   <td>
+ 
+                      <button class="btn btn-success" type="button" (click)="onEditUser(u._id)" data-bs-toggle="modal" data-bs-target="#modal-form-signup">Active</button>
+                      &nbsp;
+                      <button class="btn btn-success" type="button" (click)="onEditUser(u._id)" data-bs-toggle="modal" data-bs-target="#modal-form-signup">Details</button>
+                   </td>
+         
+ 
+                 </tr>
+ 
+              </tbody>
+           </table>
+        </div>
+     </div>
+  </div>
+ 

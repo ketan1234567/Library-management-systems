@@ -18,6 +18,7 @@ export class SiginService {
   
   apiurl = 'http://localhost:1010/signup-data/data'
   apiurl_1 = 'http://localhost:1010/login-data/login'
+  apiurl_3='http://localhost:1010'
 
   CheckLoginData(data: any): Observable<any> {
     let api_url = `${this.apiurl_1}`;
@@ -28,6 +29,12 @@ export class SiginService {
   SignUp(data: any): Observable<any> {
     let api_url = `${this.apiurl}`;
     return this.httpclient.post(api_url, data, { observe: 'response', withCredentials: true }).pipe(
+      catchError(this.handleError)
+    )
+  }
+  GetUserDetails(): Observable<any> {
+    let apiurl_2 = `${this.apiurl_3}/get`;
+    return this.httpclient.get(apiurl_2, { observe: 'response', withCredentials: true }).pipe(
       catchError(this.handleError)
     )
   }
@@ -64,6 +71,6 @@ export class SiginService {
    this.userRole=JSON.parse(this.userDetails).role;
     console.log(this.userData);
     
-
   }
+
 }

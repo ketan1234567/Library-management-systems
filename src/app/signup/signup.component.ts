@@ -40,14 +40,16 @@ export class SignupComponent implements OnInit {
     }
     //console.log(result+"resulttttttttttttttttttt");
     return result;
-
 }
   signUp(){
     this.processValidation=true
     if(this.reactiveForm.valid){
     this.reactiveForm.value.SID=this.generateCode()
+  this.reactiveForm.value.status="inactive";
+   console.log(this.reactiveForm.value);
+    
       this.service.SignUp(this.reactiveForm.value).subscribe((result)=>{
-        console.log(result);
+        //console.log(result);
         const data=this.route
         Swal.fire({ text: "signUp Succfully", icon: 'success'}).then(function (result) {
           if (true) {
