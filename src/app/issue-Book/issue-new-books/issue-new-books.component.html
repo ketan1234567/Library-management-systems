@@ -33,7 +33,7 @@
             <div class="col-lg-4 col-sm-6">
               <div class="mb-4">
                 <label for="StudentId">StudentId</label>
-                <input type="text" class="form-control"  formControlName="StudentId" (change)="changeColor($event)">
+                <input type="text" class="form-control"  formControlName="StudentId"  (keyup)="onKeyUp($event)">
               </div>
               <div class="mb-4">
                 <label for="isbn-number">ISBN Number or Book Title</label>
