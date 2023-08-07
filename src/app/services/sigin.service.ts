@@ -32,6 +32,7 @@ export class SiginService {
       catchError(this.handleError)
     )
   }
+
   GetUserDetails(): Observable<any> {
     let apiurl_2 = `${this.apiurl_3}/get`;
     return this.httpclient.get(apiurl_2, { observe: 'response', withCredentials: true }).pipe(

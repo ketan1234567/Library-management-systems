@@ -56,6 +56,9 @@ export class FileUploadService {
       catchError(this.handleError)
     )
   }
+  getAllBooksData(): Observable<any> {
+    return this.http.get(`${this.baseUrl}/allDataImages`)
+  }
 
 
     // Error
