@@ -28,6 +28,7 @@ import { IssueNewBooksComponent } from './issue-Book/issue-new-books/issue-new-b
 import { IssueViewBooksComponent } from './issue-Book/issue-view-books/issue-view-books.component';
 import { NavbarComponent } from './navbar/navbar/navbar.component';
 import { ViewUsersComponent } from './Users/view-users/view-users.component';
+import { CardComponent } from './card/card.component';
 
 
 
@@ -57,6 +58,7 @@ import { ViewUsersComponent } from './Users/view-users/view-users.component';
     IssueViewBooksComponent,
     NavbarComponent,
     ViewUsersComponent,
+    CardComponent,
   
 
   ],

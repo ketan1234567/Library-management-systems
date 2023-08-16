@@ -4,60 +4,57 @@
       <div class="card-body">
         <form [formGroup]="reactiveForm" (ngSubmit)="addIssueBooks()">
           <div class="row mb-4">
-
             <div class="col-lg-4 col-sm-6">
-              <div class="mb-4">
                 <label for="StudentId">StudentId</label>
-                <input type="text" class="form-control" formControlName="StudentId">
-              </div>
+                <input type="text" class="form-control" formControlName="StudentId" id="StudentId">
+         
 
-
-              <div class="col-12 col-xl-4" style="
-              width: 116%;
-              margin-left: 30px;
-              height: 72%;
-              padding: 36px;
-              margin: auto;" [style.display]="matchedData ? 'block' : 'none'">
-                <div class="row">
-                  <div class="col-12 mb-4">
-                    <div class="card shadow border-0 text-center p-0">
-                      <div class="card-body pb-5">
-
-                        <h4 class="h3">FullName:{{matchedData.fullname}}</h4>
-                        <p class="text-gray mb-4"> SID:{{matchedData.SID}}</p>
-                        <p class="text-gray mb-4">MObile:{{matchedData.
-                          mobile
-                          }}</p>
-                        <p class="text-gray mb-4">Email:{{matchedData.
-                          email
-                          }}</p>
+                      <div class="card shadow border-2 text-center p-0" *ngIf="matchedData">
+                        <div class="card-body pb-5">
+  
+                          <h4 class="h3">FullName:{{matchedData.
+                            fullname}}</h4>
+                          <p class="text-gray mb-4"> SID:{{matchedData.SID}}</p>
+                          <p class="text-gray mb-4">MObile:{{matchedData.
+                            mobile
+                            }}</p>
+                          <p class="text-gray mb-4">Email:{{matchedData.
+                            email
+                            }}</p>
+                        </div>
                       </div>
-                    </div>
-                  </div>
 
+                <label for="isbnnumber">ISBN Number or Book Title</label>
+                <input type="number" class="form-control" id="isbnnumber" formControlName="isbnnumber">
+              <div class="card1" *ngIf="allBooksdata">
+                <div class="card-body1 pb-5">
 
+                  <h4 class="h3">BookName:{{allBooksdata.book_name}}</h4>
+                  <p class="text-gray mb-4"> Author:{{allBooksdata.author}}</p>
+                  <p class="text-gray mb-4">isbn-number: {{allBooksdata.isbn_number}}</p>
+                  <p class="text-gray mb-4">category: {{allBooksdata.isbn_number}}</p>
                 </div>
               </div>
-              <div class="mb-4">
-                <label for="isbn-number">ISBN Number or Book Title</label>
-                <input type="text" class="form-control" id="price" formControlName="isbnnumber">
-              </div>
-
-              
-
-
-            </div>
-            <div class="col-lg-4 col-sm-6">
+             </div>
 
 
 
 
-            </div>
+
+
             <div class="mb-3 ">
               <button class="btn btn-tertiary" type="submit">Issue Books</button>
             </div>
+
+           
           </div>
-        </form>
+    
+          </form>
+          </div>
+     
+      
       </div>
     </div>
   </div>
+
+  
