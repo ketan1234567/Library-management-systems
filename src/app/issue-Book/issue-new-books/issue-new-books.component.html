@@ -5,27 +5,27 @@
         <form [formGroup]="reactiveForm" (ngSubmit)="addIssueBooks()">
           <div class="row mb-4">
             <div class="col-lg-4 col-sm-6">
-                <label for="StudentId">StudentId</label>
-                <input type="text" class="form-control" formControlName="StudentId" id="StudentId">
-         
+              <label for="StudentId">StudentId</label>
+              <input type="text" class="form-control" formControlName="StudentId" id="StudentId">
 
-                      <div class="card shadow border-2 text-center p-0" *ngIf="matchedData">
-                        <div class="card-body pb-5">
-  
-                          <h4 class="h3">FullName:{{matchedData.
-                            fullname}}</h4>
-                          <p class="text-gray mb-4"> SID:{{matchedData.SID}}</p>
-                          <p class="text-gray mb-4">MObile:{{matchedData.
-                            mobile
-                            }}</p>
-                          <p class="text-gray mb-4">Email:{{matchedData.
-                            email
-                            }}</p>
-                        </div>
-                      </div>
 
-                <label for="isbnnumber">ISBN Number or Book Title</label>
-                <input type="number" class="form-control" id="isbnnumber" formControlName="isbnnumber">
+              <div class="card shadow border-2 text-center p-0" *ngIf="matchedData">
+                <div class="card-body pb-5">
+
+                  <h4 class="h3">FullName:{{matchedData.
+                    fullname}}</h4>
+                  <p class="text-gray mb-4"> SID:{{matchedData.SID}}</p>
+                  <p class="text-gray mb-4">MObile:{{matchedData.
+                    mobile
+                    }}</p>
+                  <p class="text-gray mb-4">Email:{{matchedData.
+                    email
+                    }}</p>
+                </div>
+              </div>
+
+              <label for="BookId">ISBN Number or Book Title</label>
+              <input type="number" class="form-control" id="BookId" formControlName="BookId">
               <div class="card1" *ngIf="allBooksdata">
                 <div class="card-body1 pb-5">
 
@@ -35,26 +35,18 @@
                   <p class="text-gray mb-4">category: {{allBooksdata.isbn_number}}</p>
                 </div>
               </div>
-             </div>
-
-
-
-
-
-
+            </div>
             <div class="mb-3 ">
               <button class="btn btn-tertiary" type="submit">Issue Books</button>
             </div>
 
-           
+
           </div>
-    
-          </form>
-          </div>
-     
-      
+
+        </form>
       </div>
+
+
     </div>
   </div>
-
-  
+</div>

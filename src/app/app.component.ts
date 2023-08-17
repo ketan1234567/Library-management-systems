@@ -23,14 +23,14 @@ export class AppComponent implements OnInit {
         if (event instanceof NavigationEnd) {
             // Hide progress spinner or progress bar
             this.currentRoute = event.url;          
-            console.log(this.currentRoute);
+            //console.log(this.currentRoute);
         }
 
         if (event instanceof NavigationError) {
              // Hide progress spinner or progress bar
 
             // Present error to user
-            console.log(event.error);
+            //console.log(event.error);
         }
     });
 
