@@ -82,11 +82,13 @@
                  </tr>
               </thead>
               <tbody>
-                 <tr *ngFor="let u of userdata">
+                 <tr *ngFor="let u of IssueBookData">
                    <td>{{u._id}}</td>
-                   <td>{{u.category}}</td>
-                   <td>{{u.active}}</td>
-                   
+                   <td>{{u.student_name}}</td>
+                   <td>{{u.book_name}}</td>
+                   <td>{{u.isbn_number}}</td>
+                   <td>{{u.createdAt | date: 'dd/MM/yyyy hh:mm a'}}</td>
+                   <td>{{u.createdAt | date: 'dd/MM/yyyy hh:mm a'}}</td>
                    <td>
  
                       <button class="btn btn-success" type="button" (click)="onEditUser(u._id)" data-bs-toggle="modal" data-bs-target="#modal-form-signup">Edit</button>

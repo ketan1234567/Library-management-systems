@@ -7,18 +7,18 @@ import Swal from 'sweetalert2';
   providedIn: 'root'
 })
 export class SiginService {
-  adminDetails:any
-  userDataAdmin:any
-  adminRole:any
-  userDetails:any
-  userData:any
-  userRole:any
+  adminDetails: any
+  userDataAdmin: any
+  adminRole: any
+  userDetails: any
+  userData: any
+  userRole: any
 
   constructor(private httpclient: HttpClient) { }
-  
+
   apiurl = 'http://localhost:1010/signup-data/data'
   apiurl_1 = 'http://localhost:1010/login-data/login'
-  apiurl_3='http://localhost:1010'
+  apiurl_3 = 'http://localhost:1010'
 
   CheckLoginData(data: any): Observable<any> {
     let api_url = `${this.apiurl_1}`;
@@ -40,13 +40,23 @@ export class SiginService {
     )
   }
 
-  
-  GetIsssueBooks(data:any): Observable<any> {
+
+  GetIsssueBooks(data: any): Observable<any> {
     let apiurl_2 = `${this.apiurl_3}/create`;
-    return this.httpclient.post(apiurl_2,data, { observe: 'response', withCredentials: true }).pipe(
+    return this.httpclient.post(apiurl_2, data, { observe: 'response', withCredentials: true }).pipe(
       catchError(this.handleError)
     )
   }
+
+  GetIssueBooksDetails(): Observable<any> {
+    let apiurl_2 = `${this.apiurl_3}/issue`;
+    return this.httpclient.get(apiurl_2, { observe: 'response', withCredentials: true }).pipe(
+      catchError(this.handleError)
+    )
+  }
+
+
+
   // Error
   handleError(error: HttpErrorResponse) {
     let errorMessage = '';
@@ -64,22 +74,22 @@ export class SiginService {
     });
   }
 
-  AdminDetails (){
-    
-    
+  AdminDetails() {
+
+
     this.adminDetails = atob(document.cookie.split('.')[1]);
-   this.userDataAdmin=JSON.parse(this.adminDetails).email;
-   this.adminRole=JSON.parse(this.adminDetails).role;
-  //console.log(this.userDataAdmin);
-  
+    this.userDataAdmin = JSON.parse(this.adminDetails).email;
+    this.adminRole = JSON.parse(this.adminDetails).role;
+    //console.log(this.userDataAdmin);
+
   }
-  UserDetails(){
-        
+  UserDetails() {
+
     this.userDetails = atob(document.cookie.split('.')[1]);
-   this.userData=JSON.parse(this.userDetails).fullname;
-   this.userRole=JSON.parse(this.userDetails).role;
-    console.log(this.userData);
-    
+    this.userData = JSON.parse(this.userDetails).fullname;
+    this.userRole = JSON.parse(this.userDetails).role;
+    //console.log(this.userData);
+
   }
 
 }

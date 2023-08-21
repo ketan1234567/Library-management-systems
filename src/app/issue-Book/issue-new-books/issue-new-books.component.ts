@@ -62,8 +62,6 @@ export class IssueNewBooksComponent implements OnInit {
         this.matchedData = null;
       }
     });
-  
-
     this.elementRef.nativeElement.querySelector('#BookId').addEventListener('keyup', (event: KeyboardEvent) => {
       //alert("ketan")
           // Execute your logic here.
@@ -88,7 +86,6 @@ export class IssueNewBooksComponent implements OnInit {
       
           })
         })
-
         this.elementRef.nativeElement.querySelector('#BookId').addEventListener('keydown', (event: KeyboardEvent) => {
           // Check for allowed keys on keydown
           if (event.key === 'Delete' || event.key === 'Backspace') {
@@ -97,11 +94,7 @@ export class IssueNewBooksComponent implements OnInit {
             this.allBooksdata = null;
           }
         });
-
-
       }
-  
-
   reactiveForm = new FormGroup({
     StudentId: new FormControl('', Validators.required),
     BookId: new FormControl('', Validators.required)
@@ -122,11 +115,8 @@ export class IssueNewBooksComponent implements OnInit {
           Swal.fire({ text: "Error", icon: 'error'}).then(function (result) {data.navigate(['/tables'])})
         }
       })
-      
-      
+
     }
- 
-    
    }
   allData() {
 
