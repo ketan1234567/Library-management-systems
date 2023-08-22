@@ -26,8 +26,38 @@ export class IssueNewBooksComponent implements OnInit {
   matchedData: any
   vishal: any
   allBooksdata: any
+  IssueBookData:any
+  data:any
+  allreadyIssedBooks:any
   stdNames$: Observable<string[]> | undefined;
   ngOnInit() {
+
+    this.services.GetIssueBooksDetails().subscribe((result)=>{
+      this.IssueBookData=result.body
+      console.log(this.IssueBookData);
+
+      this.IssueBookData.forEach((value: any, key: any) => {
+        //console.log(value.isbn_number[0]);
+        this.data=value
+        this.allreadyIssedBooks =this.data.isbn_number[0]
+          console.log(this.allreadyIssedBooks);
+
+        
+        /*if (temp == value.SID) {
+          // console.log("correct id");
+          // const  marks = value.marks;
+          this.matchedData = value
+          this.show = true;
+          //console.log(this.matchedData);
+        } else {
+          //console.log("incorrect id");
+        }*/
+
+      })
+
+
+
+    })
 
     this.elementRef.nativeElement.querySelector('#StudentId').addEventListener('keyup', (event: KeyboardEvent) => {
 
@@ -82,6 +112,7 @@ export class IssueNewBooksComponent implements OnInit {
            }else{
             //console.log("incorrect id");
            }
+       
           })
       
           })
@@ -106,6 +137,9 @@ export class IssueNewBooksComponent implements OnInit {
       this.getAllBooksID=this.allBooksdata._id
       //console.log(this.getAllBooksID);
       this.reactiveForm.value.BookId=this.getAllBooksID
+      /*if(this.IssueBookData.body.is){
+
+      }*/
       //console.log(this.reactiveForm.value);
       this.services.GetIsssueBooks(this.reactiveForm.value).subscribe((result)=>{
         const data=this.router

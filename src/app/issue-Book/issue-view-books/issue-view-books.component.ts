@@ -23,6 +23,7 @@ export class IssueViewBooksComponent implements OnInit {
 
   }
   deleteuser(id:any){
+    alert(id);
 
   }
 
