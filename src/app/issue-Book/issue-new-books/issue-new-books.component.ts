@@ -138,7 +138,6 @@ export class IssueNewBooksComponent implements OnInit {
       //console.log(this.getAllBooksID);
       this.reactiveForm.value.BookId=this.getAllBooksID
       /*if(this.IssueBookData.body.is){
-
       }*/
       //console.log(this.reactiveForm.value);
       this.services.GetIsssueBooks(this.reactiveForm.value).subscribe((result)=>{

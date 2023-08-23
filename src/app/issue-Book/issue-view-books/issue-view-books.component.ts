@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SiginService } from 'src/app/services/sigin.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-issue-view-books',
@@ -23,8 +24,26 @@ export class IssueViewBooksComponent implements OnInit {
 
   }
   deleteuser(id:any){
-    alert(id);
+    Swal.fire({
+      title: 'Are you sure want to remove?',
+      text: 'You will not be able to recover this file!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, delete it!',
+      cancelButtonText: 'No, keep it'
+    }).then((result) => {
+      if (result.isConfirmed===true) {
+        this.services.deleteIssueBookDetails(id).subscribe((result)=>{
+          console.log(result);
+          
+          Swal.fire(
+            'Deleted!',
+            'Your imaginary file has been deleted.',
+            'success'
+          )
+        })
+      } 
+    })
 
-  }
-
+}
 }
