@@ -55,7 +55,7 @@ export class SiginService {
     )
   }
   deleteIssueBookDetails(id:any): Observable<any> {
-    let apiurl_2 = `${this.apiurl_3}/delete`;
+    let apiurl_2 = `${this.apiurl_3}/delete2`;
     return this.httpclient.delete(apiurl_2 +"/"+id, { observe: 'response', withCredentials: true }).pipe(
       catchError(this.handleError)
     )

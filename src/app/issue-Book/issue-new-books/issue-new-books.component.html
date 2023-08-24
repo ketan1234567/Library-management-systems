@@ -26,6 +26,10 @@
 
               <label for="BookId">ISBN Number or Book Title</label>
               <input type="number" class="form-control" id="BookId" formControlName="BookId">
+
+              <label for="Date">Return Date</label>
+              <input type="date" class="form-control" id="Date" formControlName="ReturnDate">
+
               <div class="card1" *ngIf="allBooksdata">
                 <div class="card-body1 pb-5">
 
@@ -36,6 +40,7 @@
                 </div>
               </div>
             </div>
+            
             <div class="mb-3 ">
               <button class="btn btn-tertiary" type="submit">Issue Books</button>
             </div>

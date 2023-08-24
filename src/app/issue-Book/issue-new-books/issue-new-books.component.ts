@@ -34,13 +34,13 @@ export class IssueNewBooksComponent implements OnInit {
 
     this.services.GetIssueBooksDetails().subscribe((result)=>{
       this.IssueBookData=result.body
-      console.log(this.IssueBookData);
+     // console.log(this.IssueBookData);
 
       this.IssueBookData.forEach((value: any, key: any) => {
         //console.log(value.isbn_number[0]);
         this.data=value
         this.allreadyIssedBooks =this.data.isbn_number[0]
-          console.log(this.allreadyIssedBooks);
+          //console.log(this.allreadyIssedBooks);
 
         
         /*if (temp == value.SID) {
@@ -128,9 +128,11 @@ export class IssueNewBooksComponent implements OnInit {
       }
   reactiveForm = new FormGroup({
     StudentId: new FormControl('', Validators.required),
-    BookId: new FormControl('', Validators.required)
+    BookId: new FormControl('', Validators.required),
+    ReturnDate:new FormControl('',Validators.required)
   })
   addIssueBooks() {
+    console.log(this.reactiveForm.value);
     //console.log(this.allBooksdata.isbn_number);
     if(this.reactiveForm.valid || this.reactiveForm.value.BookId===this.reactiveForm.value.BookId){
       //console.log("This is ketan");
@@ -139,7 +141,7 @@ export class IssueNewBooksComponent implements OnInit {
       this.reactiveForm.value.BookId=this.getAllBooksID
       /*if(this.IssueBookData.body.is){
       }*/
-      //console.log(this.reactiveForm.value);
+   
       this.services.GetIsssueBooks(this.reactiveForm.value).subscribe((result)=>{
         const data=this.router
         if(result.statusText==="OK"){
