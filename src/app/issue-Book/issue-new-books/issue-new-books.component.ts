@@ -132,16 +132,16 @@ export class IssueNewBooksComponent implements OnInit {
     ReturnDate:new FormControl('',Validators.required)
   })
   addIssueBooks() {
-    console.log(this.reactiveForm.value);
+    //console.log(this.reactiveForm.value);
     //console.log(this.allBooksdata.isbn_number);
-    if(this.reactiveForm.valid || this.reactiveForm.value.BookId===this.reactiveForm.value.BookId){
+   if(this.reactiveForm.valid || this.reactiveForm.value.BookId===this.reactiveForm.value.BookId){
       //console.log("This is ketan");
       this.getAllBooksID=this.allBooksdata._id
       //console.log(this.getAllBooksID);
       this.reactiveForm.value.BookId=this.getAllBooksID
       /*if(this.IssueBookData.body.is){
       }*/
-   
+      console.log(this.reactiveForm.value);
       this.services.GetIsssueBooks(this.reactiveForm.value).subscribe((result)=>{
         const data=this.router
         if(result.statusText==="OK"){
@@ -150,7 +150,6 @@ export class IssueNewBooksComponent implements OnInit {
           Swal.fire({ text: "Error", icon: 'error'}).then(function (result) {data.navigate(['/tables'])})
         }
       })
-
     }
    }
   allData() {
