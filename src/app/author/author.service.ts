@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BooksService } from '../Category/books.service';
+import { BooksService } from '../Category/BooksService';
 import { Observable, catchError, throwError } from 'rxjs';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import Swal from 'sweetalert2';

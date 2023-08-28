@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { BooksService } from '../books.service';
+import { BooksService } from '../BooksService';
 import Swal from 'sweetalert2';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
@@ -66,10 +66,7 @@ export class ViewCategoryComponent implements OnInit {
   }
   UpdatecategoryForm(){
     console.log("in update form",this.reactiveForm.value)
-
-
      this.services.UpdatedCategory(this.reactiveForm.value).subscribe((result)=>{
-
       if(result.statusText==="OK"){
         Swal.fire({ text: "Updated Successfully", icon: 'success'}).then(
         )

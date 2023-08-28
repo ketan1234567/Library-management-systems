@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { BooksService } from '../books.service';
+import { BooksService } from '../BooksService';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
 

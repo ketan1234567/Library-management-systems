@@ -81,16 +81,12 @@ export class SiginService {
   }
 
   AdminDetails() {
-
-
     this.adminDetails = atob(document.cookie.split('.')[1]);
     this.userDataAdmin = JSON.parse(this.adminDetails).email;
     this.adminRole = JSON.parse(this.adminDetails).role;
     //console.log(this.userDataAdmin);
-
   }
   UserDetails() {
-
     this.userDetails = atob(document.cookie.split('.')[1]);
     this.userData = JSON.parse(this.userDetails).fullname;
     this.userRole = JSON.parse(this.userDetails).role;

@@ -5,7 +5,7 @@ import { FileUploadService } from '../file-upload.service';
 import { Observable } from 'rxjs';
 import Swal from 'sweetalert2';
 import { Route, Router } from '@angular/router';
-import { BooksService } from 'src/app/Category/books.service';
+import { BooksService } from 'src/app/Category/BooksService';
 import { AuthorService } from 'src/app/author/author.service';
 
 @Component({

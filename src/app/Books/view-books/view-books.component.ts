@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FileUploadService } from '../file-upload.service';
 import { DomSanitizer } from '@angular/platform-browser';
-import { BooksService } from 'src/app/Category/books.service';
+import { BooksService } from 'src/app/Category/BooksService';
 import { Subscriber, subscribeOn } from 'rxjs';
 import Swal from 'sweetalert2';
 import { FormControl, FormGroup, Validators } from '@angular/forms';

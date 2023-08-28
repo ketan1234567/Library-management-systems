@@ -141,7 +141,7 @@ export class IssueNewBooksComponent implements OnInit {
       this.reactiveForm.value.BookId=this.getAllBooksID
       /*if(this.IssueBookData.body.is){
       }*/
-      console.log(this.reactiveForm.value);
+      //console.log(this.reactiveForm.value);
       this.services.GetIsssueBooks(this.reactiveForm.value).subscribe((result)=>{
         const data=this.router
         if(result.statusText==="OK"){
