@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { BooksService } from '../BooksService';
 import Swal from 'sweetalert2';
-import { Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-book',
@@ -10,11 +10,40 @@ import { Router } from '@angular/router';
   styleUrls: ['./add-book.component.css']
 })
 export class AddBookComponent implements OnInit {
-  ngOnInit(): void {
-  
+
+  userDetails:any
+  userData:any
+  userRole:any
+  ngOnInit() {
+    this.vishal()
+
+
   }
   processValidation:any
-  constructor(private services:BooksService,private router:Router){}
+  constructor(private services:BooksService,private route:Router){
+    this.userDetails = atob(document.cookie.split('.')[1]);
+    this.userData=JSON.parse(this.userDetails).fullname;
+    this.userRole=JSON.parse(this.userDetails).role;
+    // console.log(this.userRole);
+
+
+  }
+  vishal(){
+    console.log(this.userRole);
+    if(this.userRole==1){
+      console.log("This is ketan");
+      
+
+     
+      
+    }else{
+   // window.location.href="/sign-in"
+   this.route.navigate(['/sign-in'])
+    }
+
+    
+    
+  }
 
 
   reactiveForm=new FormGroup({
