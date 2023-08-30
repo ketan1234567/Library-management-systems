@@ -15,7 +15,7 @@ export class AddBookComponent implements OnInit {
   userData:any
   userRole:any
   ngOnInit() {
-    this.vishal()
+   
 
 
   }
@@ -24,26 +24,16 @@ export class AddBookComponent implements OnInit {
     this.userDetails = atob(document.cookie.split('.')[1]);
     this.userData=JSON.parse(this.userDetails).fullname;
     this.userRole=JSON.parse(this.userDetails).role;
-    // console.log(this.userRole);
+  //  console.log("this is constuector ");
+
 
 
   }
-  vishal(){
-    console.log(this.userRole);
-    if(this.userRole==1){
-      console.log("This is ketan");
-      
 
-     
-      
-    }else{
-   // window.location.href="/sign-in"
-   this.route.navigate(['/sign-in'])
-    }
 
     
     
-  }
+
 
 
   reactiveForm=new FormGroup({
@@ -57,7 +47,7 @@ categoryForm(){
   
     this.services.addCategory(this.reactiveForm.value).subscribe((result)=>{
       console.log(result);
-      const data=this.router
+      const data=this.route
       if(result.statusText==="OK"){
         Swal.fire({ text: result.statusText, icon: 'success'}).then(function (result) {data.navigate(['/tables'])})
       }else{
