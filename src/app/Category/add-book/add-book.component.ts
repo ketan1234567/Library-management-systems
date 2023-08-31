@@ -15,21 +15,19 @@ export class AddBookComponent implements OnInit {
   userData:any
   userRole:any
   ngOnInit() {
-   
+
 
 
   }
   processValidation:any
   constructor(private services:BooksService,private route:Router){
-    this.userDetails = atob(document.cookie.split('.')[1]);
-    this.userData=JSON.parse(this.userDetails).fullname;
-    this.userRole=JSON.parse(this.userDetails).role;
+
+
   //  console.log("this is constuector ");
 
 
 
   }
-
 
     
     
