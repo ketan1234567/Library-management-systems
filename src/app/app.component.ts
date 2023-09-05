@@ -30,7 +30,7 @@ if(this.userRole===1){
     this.router.events.subscribe((event: Event) => {
         if (event instanceof NavigationStart) {
             // Show progress spinner or progress bar
-            console.log('Route change detected');
+           // console.log('Route change detected');
 
    
 
@@ -52,7 +52,7 @@ if(this.userRole===1){
             // Present error to user
             //console.log(event.error);
         }else{
-          console.log("This is error");
+        //  console.log("This is error");
           
          
         }
@@ -70,7 +70,7 @@ vishal(){
 
 }
 anil(){
-  console.log("router navigate");
+  //console.log("router navigate");
   
   this.router.navigateByUrl('/sign-in');
 

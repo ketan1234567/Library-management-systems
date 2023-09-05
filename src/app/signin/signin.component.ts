@@ -29,7 +29,7 @@ export class SigninComponent implements OnInit {
         console.log(result);
         const data=this.router
         if(result.statusText==="OK"){
-          Swal.fire({ text: result.statusText, icon: 'success'}).then(function (result) {data.navigate(['/tables'])})
+          Swal.fire({ text: result.statusText, icon: 'success'}).then(function (result) {data.navigate(['/'])})
         }else{
           Swal.fire({ text: "Error", icon: 'error'}).then(function (result) {data.navigate(['/tables'])})
         }

@@ -310,8 +310,11 @@ const d = document;
         buttonsStyling: false
         });
         
+
+
+        
         // SweetAlert 2
-        document.getElementById('basicAlert').addEventListener('click', function () {
+       /* document.getElementById('basicAlert').addEventListener('click', function () {
         swalWithBootstrapButtons.fire(
             'Basic alert',
             'You clicked the button!'
@@ -359,9 +362,9 @@ const d = document;
             'That thing is still around?',
             'question'
         );
-        });
+        });*/
         
-        document.getElementById('notifyTopLeft').addEventListener('click', function () {
+        /*document.getElementById('notifyTopLeft').addEventListener('click', function () {
         const notyf = new Notyf({
             position: {
                 x: 'left',
@@ -460,4 +463,6 @@ const d = document;
             message: 'John Garreth: Are you ready for the presentation?'
         });
         });
- }, 10);
+ }, 10);*/
+
+})
