@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Subject, fromEvent, takeUntil } from 'rxjs';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -17,12 +18,23 @@ export class DashboardComponent implements OnInit {
   userRole:any;
   adminRole:any
 
-
+  private unsubscriber : Subject<void> = new Subject<void>();
   constructor(private router: Router) { }
 
   ngOnInit(): void {
     this.AdminDetails()
     this.UserDetails()
+
+    
+    history.pushState(null, '');
+
+    fromEvent(window, 'popstate').pipe(
+      takeUntil(this.unsubscriber)
+      
+    ).subscribe((_) => {
+      history.pushState(null, '');
+      console.log("unsubscriber");
+    });
   }
   logout() {
     this.delete_cookie("token");
@@ -55,4 +67,7 @@ export class DashboardComponent implements OnInit {
     
 
   }
+  ngOnDestroy() {
+    this.unsubscriber.unsubscribe();
+ }
 }

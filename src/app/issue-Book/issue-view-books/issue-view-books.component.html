@@ -89,7 +89,20 @@
                    <td>{{u.book_name}}</td>
                    <td>{{u.isbn_number}}</td>
                    <td>{{u.createdAt | date: 'dd/MM/yyyy hh:mm a'}}</td>
-                   <td>{{u.ReturnDate| date: 'dd/MM/yyyy '}}</td>
+                   <td>{{u.ReturnDate| date: 'dd/MM/yyyy ' }} 
+                     <div *ngIf="message; else elseBlock">
+                        <button class="btn btn-danger" type="button" >You have to issued book in {{daysinPay}} days ago and your Due is {{Ruppes}}</button> 
+         
+                     </div>
+ 
+
+
+
+
+                   </td>
+                   <ng-template #elseBlock>
+                     <td>{{u.ReturnDate| date: 'dd/MM/yyyy ' }} </td>
+                   </ng-template>
                    <td>
  
                       <button class="btn btn-success" type="button" (click)="onEditUser(u._id)" data-bs-toggle="modal" data-bs-target="#modal-form-signup">Edit</button>

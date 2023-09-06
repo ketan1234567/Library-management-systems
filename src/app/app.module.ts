@@ -29,6 +29,7 @@ import { IssueViewBooksComponent } from './issue-Book/issue-view-books/issue-vie
 import { NavbarComponent } from './navbar/navbar/navbar.component';
 import { ViewUsersComponent } from './Users/view-users/view-users.component';
 import { CardComponent } from './card/card.component';
+import { DatePipe } from '@angular/common';
 
 
 
@@ -70,7 +71,7 @@ import { CardComponent } from './card/card.component';
     HttpClientModule
     
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

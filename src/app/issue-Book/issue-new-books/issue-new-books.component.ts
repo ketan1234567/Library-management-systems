@@ -1,5 +1,5 @@
 import { Component, HostListener, OnInit, ElementRef, AfterViewInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { Observable, combineLatest, filter, forkJoin, map, of, scan, timer } from 'rxjs';
 import { FileUploadService } from 'src/app/Books/file-upload.service';
 import { SiginService } from 'src/app/services/sigin.service';
@@ -159,6 +159,8 @@ export class IssueNewBooksComponent implements OnInit {
     this.reactiveForm.reset();
     this.show = false;
   }
+
+
 
 
 }
