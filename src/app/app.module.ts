@@ -29,7 +29,7 @@ import { IssueViewBooksComponent } from './issue-Book/issue-view-books/issue-vie
 import { NavbarComponent } from './navbar/navbar/navbar.component';
 import { ViewUsersComponent } from './Users/view-users/view-users.component';
 import { CardComponent } from './card/card.component';
-import { DatePipe } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 
 
 
@@ -68,7 +68,8 @@ import { DatePipe } from '@angular/common';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    CommonModule
     
   ],
   providers: [DatePipe],

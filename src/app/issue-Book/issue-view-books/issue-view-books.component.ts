@@ -17,6 +17,8 @@ export class IssueViewBooksComponent implements OnInit {
   datePipeString3:any
   daysinPay:any
   Ruppes:any
+  mainData:any
+  PositiveNumber:any
   constructor(private services:SiginService,private datePipe: DatePipe){
 
   }
@@ -24,7 +26,7 @@ export class IssueViewBooksComponent implements OnInit {
     this.services.GetIssueBooksDetails().subscribe((result)=>{
    //   console.log(result);
       this.IssueBookData=result.body
-      console.log();
+    //  console.log(this.IssueBookData);
       this.groupValidator()
     })
 
@@ -58,36 +60,50 @@ export class IssueViewBooksComponent implements OnInit {
 }
 
 groupValidator() {
+
+for (let i = 0; i < this.IssueBookData.length; i++) {
+  console.log(this.IssueBookData[i]);
+
   //const fromCtrl = this.IssueBookData[0].createdAt | this.date: 'dd/MM/yyyy hh:mm a'
-  this.datePipeString = this.datePipe.transform(this.IssueBookData[0].createdAt,'yyyy-MM-dd');
-  this.datePipeString2 = this.datePipe.transform(this.IssueBookData[0].ReturnDate,'yyyy-MM-dd');
+  this.datePipeString = this.datePipe.transform(this.IssueBookData[i].createdAt,'yyyy-MM-dd');
+  this.datePipeString2 = this.datePipe.transform(this.IssueBookData[i].ReturnDate,'yyyy-MM-dd');
   this.datePipeString3 = this.datePipe.transform(Date.now(),'yyyy-MM-dd');
   
- // console.log(this.datePipeString2<this.datePipeString3);
+ //console.log(this.datePipeString2<this.datePipeString3);
   if(this.datePipeString2<this.datePipeString3){
- this.message=`<button class="btn btn-danger" type="button">This is 10 Rupesss Add </button> `
- //console.log("this is due to pay");
+ this.message="this pay for"
+ console.log("this is due to pay");
   }else{
-    //console.log("This is error Coming");
+    console.log("This is error Coming");
   }
+
 
   const date1: Date = new Date(this.datePipeString2);
   const date2: Date = new Date(this.datePipeString3);
 
   const diffInMilliseconds: number = date2.getTime() - date1.getTime();
     const diffInDays: number = Math.floor(diffInMilliseconds / (1000 * 60 * 60 * 24));
-    this.daysinPay=diffInDays
+   // this.daysinPay=diffInDays
+
+
     const perpay=10
-    this.Ruppes=this.daysinPay*perpay
+    this.IssueBookData[i].daysinPay=diffInDays //create proprty in object in Golba
+    if(diffInDays>0){
+      this.IssueBookData[i].Ruppes=diffInDays*perpay
+      console.log(this.IssueBookData[i]);
+      
+    }else{
+      this.IssueBookData[i].Ruppes=0
+    }
+  
+
+
  //   console.log('Difference in days:', this.Ruppes);
 
 
  
 }
-
-
-
-
+}
 
 
 }

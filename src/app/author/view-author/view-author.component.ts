@@ -29,6 +29,9 @@ export class ViewAuthorComponent implements OnInit   {
     this.editAuthorAllData=result.body
     this.reactiveForm.setValue({id:this.editAuthorId._id,author:this.editAuthorAllData.author})
   })
+//console.log(this.reactiveForm.value);
+
+  
   }
   deleteuser(id:any){
     Swal.fire({

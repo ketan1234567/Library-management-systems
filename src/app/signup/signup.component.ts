@@ -45,7 +45,7 @@ export class SignupComponent implements OnInit {
     this.processValidation=true
     if(this.reactiveForm.valid){
     this.reactiveForm.value.SID=this.generateCode()
-  this.reactiveForm.value.status="inactive";
+  this.reactiveForm.value.status=1;
    console.log(this.reactiveForm.value);
     
       this.service.SignUp(this.reactiveForm.value).subscribe((result)=>{

@@ -61,6 +61,20 @@ export class SiginService {
     )
   }
 
+  UpdateStatus(data:any):Observable<any>{
+    let api_url=`${this.apiurl_3}/update`;
+    return this.httpclient.put(api_url+"/"+data.id,data,{observe:'response',withCredentials:true}).pipe(
+      catchError(this.handleError)
+    )
+  }
+
+  EditUserStatus(id:any): Observable<any> {
+    let apiurl_2 = `${this.apiurl_3}/status`;
+    return this.httpclient.get(apiurl_2+"/"+id , { observe: 'response', withCredentials: true }).pipe(
+      catchError(this.handleError)
+    )
+  }
+
 
 
   // Error

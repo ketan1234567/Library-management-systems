@@ -22,12 +22,25 @@
                    <td>{{u.fullname}}</td>
                    <td>{{u.mobile}}</td>
                     <td>{{ u.createdAt | date: 'dd/MM/yyyy hh:mm a' }}</td>
-                   <td>{{u.status}}</td>
                    <td>
- 
-                      <button class="btn btn-success" type="button" (click)="onEditUser(u._id)" data-bs-toggle="modal" data-bs-target="#modal-form-signup">Active</button>
-                      &nbsp;
-                      <button class="btn btn-success" type="button" (click)="onEditUser(u._id)" data-bs-toggle="modal" data-bs-target="#modal-form-signup">Details</button>
+                     <div *ngIf="u.status==1; else elseBlock">
+                    Active
+
+                     </div>
+                     <ng-template #elseBlock>
+                        Blocked
+                     </ng-template> 
+                   </td>
+                   <td>
+                     <div *ngIf="u.status==1; else elseBlock34">
+                        <button class="btn btn-danger" type="button" (click)="onEditUser(u._id)">InActive</button>
+                     
+
+                     </div>
+                     <ng-template #elseBlock34>
+                        <button class="btn  btn-success" type="button" (click)="onEditUserActive(u._id)">Active</button>
+
+                     </ng-template>
                    </td>
          
  

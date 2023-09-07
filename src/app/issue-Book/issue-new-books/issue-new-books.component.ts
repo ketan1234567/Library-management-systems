@@ -40,7 +40,7 @@ export class IssueNewBooksComponent implements OnInit {
         //console.log(value.isbn_number[0]);
         this.data=value
         this.allreadyIssedBooks =this.data.isbn_number[0]
-          //console.log(this.allreadyIssedBooks);
+          console.log(this.allreadyIssedBooks);
 
         
         /*if (temp == value.SID) {
