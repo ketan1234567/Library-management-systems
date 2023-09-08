@@ -32,7 +32,7 @@
               <label for="Date">Return Date</label>
               <input type="date" class="form-control" id="Date" formControlName="ReturnDate">
 
-              <div class="card1" *ngIf="allBooksdata">
+              <div class="card1" *ngIf="!allBooksdata.alread; else elseBlock">
                 <div class="card-body1 pb-5">
 
                   <h4 class="h3">BookName:{{allBooksdata.book_name}}</h4>
@@ -41,7 +41,11 @@
                   <p class="text-gray mb-4">category: {{allBooksdata.isbn_number}}</p>
                 </div>
               </div>
+              <ng-template #elseBlock>
+                <h1 style="color: red;" class="Issued" >This Book is Alread Issued</h1>
+              </ng-template> 
             </div>
+            
             
             <div class="mb-3 ">
               <button class="btn btn-tertiary" type="submit">Issue Books</button>

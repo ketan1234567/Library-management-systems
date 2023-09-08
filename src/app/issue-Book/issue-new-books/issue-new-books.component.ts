@@ -16,6 +16,7 @@ import Swal from 'sweetalert2';
 export class IssueNewBooksComponent implements OnInit {
   onClick: any;
   show: any;
+  items: any;
   constructor(private services: SiginService, private servicess: FileUploadService, private elementRef: ElementRef,private servicesI:IssueBookService,private router:Router) {
     // console.log("This is ketan");
 
@@ -30,6 +31,8 @@ export class IssueNewBooksComponent implements OnInit {
   data:any
   allreadyIssedBooks:any
   stdNames$: Observable<string[]> | undefined;
+   // Filtered array
+   filteredItems: { id: number; name: string }[] = [];
   ngOnInit() {
 
     this.services.GetIssueBooksDetails().subscribe((result)=>{
@@ -37,10 +40,14 @@ export class IssueNewBooksComponent implements OnInit {
      // console.log(this.IssueBookData);
 
       this.IssueBookData.forEach((value: any, key: any) => {
-        //console.log(value.isbn_number[0]);
-        this.data=value
-        this.allreadyIssedBooks =this.data.isbn_number[0]
-          console.log(this.allreadyIssedBooks);
+        //console.log(value.);
+        //this.data=value
+        //this.allreadyIssedBooks =this.data.isbn_number
+        // console.log(this.allreadyIssedBooks);
+         //console.log(this.allreadyIssedBooks[1]);
+
+
+   
 
         
         /*if (temp == value.SID) {
@@ -54,6 +61,8 @@ export class IssueNewBooksComponent implements OnInit {
         }*/
 
       })
+
+
 
 
 
@@ -95,13 +104,25 @@ export class IssueNewBooksComponent implements OnInit {
     this.elementRef.nativeElement.querySelector('#BookId').addEventListener('keyup', (event: KeyboardEvent) => {
       //alert("ketan")
           // Execute your logic here.
+         //console.log("key up",event);
+          
+        
+
+          
+          
           const temp2=(event.target as HTMLTextAreaElement).value
+
+          
+           
+
+
           this.servicess.getAllBooksData().subscribe((result)=>{
             this.getAllBooksData=result
            // this.checkdata=result.body
            //console.log(this.getAllBooksData);
          this.getAllBooksData.forEach((value: any, key: any) => {
           //console.log(temp2==value.isbn_number);
+          const book= this.IssueBookData.find( (book: { isbn_number: any }) => {return book.isbn_number==  temp2})
            if(temp2==value.isbn_number){
            //console.log("correct id");
           const  marks2 = value.marks2;
@@ -109,22 +130,39 @@ export class IssueNewBooksComponent implements OnInit {
            //console.log(this.allBooksdata);
            this.show = true;
   
+           }else if(book!==undefined){
+            console.log(book.isbn_number[0]);
+            const main=book.isbn_number[0]
+            this.allBooksdata.alread=main
+            console.log(this.allBooksdata);
+            
            }else{
-            //console.log("incorrect id");
+            console.log("isbn_number not found"+temp2);
+
            }
        
           })
       
           })
+      
+        
+         
+         /* const filteredData = this.IssueBookData.filter((element: { isbn_number: any }) => {
+            return element.isbn_number===this.allBooksdata.isbn_number
+          });*/
+
+         // console.log(filteredData);
         })
         this.elementRef.nativeElement.querySelector('#BookId').addEventListener('keydown', (event: KeyboardEvent) => {
           // Check for allowed keys on keydown
           if (event.key === 'Delete' || event.key === 'Backspace') {
             this.reset()
             this.show = false;
+          
             this.allBooksdata = null;
           }
         });
+     
       }
   reactiveForm = new FormGroup({
     StudentId: new FormControl('', Validators.required),
