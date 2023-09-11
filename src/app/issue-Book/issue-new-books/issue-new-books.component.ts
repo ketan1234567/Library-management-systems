@@ -78,13 +78,15 @@ export class IssueNewBooksComponent implements OnInit {
         // this.checkdata=result.body
         // console.log(this.checkdata[0]);
         this.checkdata.forEach((value: any, key: any) => {
-          // console.log( temp,value.SID,temp==value.SID);
+
+
+          //const STUDENT_id= this.checkdata.find( (STUDENT_id: { status: any }) => {return STUDENT_id.status==  temp})
           if (temp == value.SID) {
             // console.log("correct id");
             // const  marks = value.marks;
             this.matchedData = value
             this.show = true;
-            //console.log(this.matchedData);
+            console.log(this.matchedData);
           } else {
             //console.log("incorrect id");
           }
@@ -123,39 +125,33 @@ export class IssueNewBooksComponent implements OnInit {
          this.getAllBooksData.forEach((value: any, key: any) => {
           //console.log(temp2==value.isbn_number);
           const book= this.IssueBookData.find( (book: { isbn_number: any }) => {return book.isbn_number==  temp2})
-           if(temp2==value.isbn_number){
-           //console.log("correct id");
-          const  marks2 = value.marks2;
-           this.allBooksdata=value
-           //console.log(this.allBooksdata);
-           this.show = true;
-  
-           }else if(book!==undefined){
-            console.log(book.isbn_number[0]);
-            const main=book.isbn_number[0]
-            this.allBooksdata.alread=main
+          if (temp2 == value.isbn_number) {
+            const marks2 = value.marks2;
+            this.allBooksdata = value; // Assign the entire 'value' object to 'this.allBooksdata'
             console.log(this.allBooksdata);
-            
-           }else{
-            console.log("isbn_number not found"+temp2);
-
-           }
+            this.show = true;
+          } else if (book !== undefined) {
+            console.log(book.isbn_number[0]);
+            const main = book.isbn_number;
+            if (!this.allBooksdata) {
+              this.allBooksdata = {}; // Initialize it as an empty object if it's still null
+            }
+            this.allBooksdata.alread = main; // Assign the 'alread' property to 'this.allBooksdata'
+            console.log(this.allBooksdata);
+          } else {
+            console.log("isbn_number not found" + temp2);
+          }
        
           })
       
           })
-      
-        
-         
-         /* const filteredData = this.IssueBookData.filter((element: { isbn_number: any }) => {
-            return element.isbn_number===this.allBooksdata.isbn_number
-          });*/
 
-         // console.log(filteredData);
         })
         this.elementRef.nativeElement.querySelector('#BookId').addEventListener('keydown', (event: KeyboardEvent) => {
           // Check for allowed keys on keydown
-          if (event.key === 'Delete' || event.key === 'Backspace') {
+          if ( event.key === 'Backspace') {
+            console.log("Keydown");
+            
             this.reset()
             this.show = false;
           

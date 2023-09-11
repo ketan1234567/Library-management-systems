@@ -11,20 +11,45 @@
               <input type="text" class="form-control" formControlName="StudentId" id="StudentId">
 
 
-              <div class="card shadow border-2 text-center p-0" *ngIf="matchedData">
-                <div class="card-body pb-5">
 
-                  <h4 class="h3">FullName:{{matchedData.
-                    fullname}}</h4>
-                  <p class="text-gray mb-4"> SID:{{matchedData.SID}}</p>
-                  <p class="text-gray mb-4">MObile:{{matchedData.
-                    mobile
-                    }}</p>
-                  <p class="text-gray mb-4">Email:{{matchedData.
-                    email
-                    }}</p>
+              <ng-container *ngIf="matchedData">
+
+
+             
+             
+                <div *ngIf="matchedData.status==1; else elseBlock">
+                 
+                  <div class="card shadow border-2 text-center p-0">
+                    <div class="card-body pb-5">
+    
+                      <h4 class="h3">FullName:{{matchedData.
+                        fullname}}</h4>
+                      <p class="text-gray mb-4"> SID:{{matchedData.SID}}</p>
+                      <p class="text-gray mb-4">MObile:{{matchedData.
+                        mobile
+                        }}</p>
+                      <p class="text-gray mb-4">Email:{{matchedData.
+                        email
+                        }}</p>
+                    </div>
+                  </div>
+                 
                 </div>
-              </div>
+                </ng-container>
+                
+                <ng-template #elseBlock>
+                  <h1 style="color: red;" class="Issued" >Your user is not  Activited</h1>
+                </ng-template>
+
+
+
+
+          
+              <ng-template #elseBlock>
+                <h1 style="color: red;" class="Issued" >This is user Block Please do Active user First</h1>
+              </ng-template>
+
+
 
               <label for="BookId">ISBN Number or Book Title</label>
               <input type="number" class="form-control" id="BookId" formControlName="BookId">
@@ -32,18 +57,30 @@
               <label for="Date">Return Date</label>
               <input type="date" class="form-control" id="Date" formControlName="ReturnDate">
 
-              <div class="card1" *ngIf="!allBooksdata.alread; else elseBlock">
-                <div class="card-body1 pb-5">
-
-                  <h4 class="h3">BookName:{{allBooksdata.book_name}}</h4>
-                  <p class="text-gray mb-4"> Author:{{allBooksdata.author}}</p>
-                  <p class="text-gray mb-4">isbn-number: {{allBooksdata.isbn_number}}</p>
-                  <p class="text-gray mb-4">category: {{allBooksdata.isbn_number}}</p>
+              
+              <ng-container *ngIf="allBooksdata">
+                
+                <div class="card1">
+                  <div class="card-body1 pb-5">
+  
+                    <h4 class="h3">BookName:{{allBooksdata.book_name}}</h4>
+                    <p class="text-gray mb-4"> Author:{{allBooksdata.author}}</p>
+                    <p class="text-gray mb-4">isbn-number: {{allBooksdata.isbn_number}}</p>
+                    <p class="text-gray mb-4">category: {{allBooksdata.isbn_number}}</p>
+                  </div>
                 </div>
-              </div>
-              <ng-template #elseBlock>
-                <h1 style="color: red;" class="Issued" >This Book is Alread Issued</h1>
-              </ng-template> 
+                <div *ngIf="!allBooksdata.alread; else elseBlock">
+                
+                 
+                </div>
+                </ng-container>
+                
+                <ng-template #elseBlock>
+                  <h1 style="color: red;" class="Issued" >This Book is Alread Issued</h1>
+                </ng-template>
+
+
+      
             </div>
             
             
