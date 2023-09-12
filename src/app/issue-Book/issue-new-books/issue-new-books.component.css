@@ -1,0 +1,9 @@
+.text-success{
+    color:green;
+  }
+  .error{
+    color:red;
+  }
+  .text-info{
+  font-style: italic;
+  }

@@ -8,16 +8,15 @@
           <div class="row mb-4">
             <div class="col-lg-4 col-sm-6">
               <label for="StudentId">StudentId</label>
-              <input type="text" class="form-control" formControlName="StudentId" id="StudentId">
-
-
-
+              <input type="number" class="form-control" formControlName="StudentId" id="StudentId">
+              <label *ngIf="reactiveForm.get('StudentId')?.invalid && processValidation" class="error">StudentId is required</label>
+              <div *ngIf="reactiveForm.get('StudentId')?.hasError('pattern')">Please enter a valid number.</div>
               <ng-container *ngIf="matchedData">
 
 
              
              
-                <div *ngIf="matchedData.status==1; else elseBlock">
+                <div *ngIf="matchedData.status==1; else elseBlock1234">
                  
                   <div class="card shadow border-2 text-center p-0">
                     <div class="card-body pb-5">
@@ -37,48 +36,38 @@
                 </div>
                 </ng-container>
                 
-                <ng-template #elseBlock>
+                <ng-template #elseBlock1234>
                   <h1 style="color: red;" class="Issued" >Your user is not  Activited</h1>
                 </ng-template>
 
-
-
-
-          
-              <ng-template #elseBlock>
-                <h1 style="color: red;" class="Issued" >This is user Block Please do Active user First</h1>
-              </ng-template>
-
-
-
               <label for="BookId">ISBN Number or Book Title</label>
               <input type="number" class="form-control" id="BookId" formControlName="BookId">
-
+              <label *ngIf="reactiveForm.get('BookId')?.invalid && processValidation" class="error">BookId is required</label>
+                        
               <label for="Date">Return Date</label>
               <input type="date" class="form-control" id="Date" formControlName="ReturnDate">
-
+              <label *ngIf="reactiveForm.get('ReturnDate')?.invalid && processValidation" class="error">ReturnDate is required</label>
               
-              <ng-container *ngIf="allBooksdata">
-                
+              <ng-container *ngIf="allBooksdata" >
                 <div class="card1">
                   <div class="card-body1 pb-5">
-  
-                    <h4 class="h3">BookName:{{allBooksdata.book_name}}</h4>
-                    <p class="text-gray mb-4"> Author:{{allBooksdata.author}}</p>
-                    <p class="text-gray mb-4">isbn-number: {{allBooksdata.isbn_number}}</p>
-                    <p class="text-gray mb-4">category: {{allBooksdata.isbn_number}}</p>
+                    <h4 class="h3">BookName: {{allBooksdata.book_name}}</h4>
+                    <p class="text-gray mb-4">Author: {{allBooksdata.author}}</p>
+                    <p class="text-gray mb-4">ISBN Number: {{allBooksdata.isbn_number}}</p>
+                    <p class="text-gray mb-4">Category: {{allBooksdata.category}}</p>
                   </div>
                 </div>
                 <div *ngIf="!allBooksdata.alread; else elseBlock">
-                
-                 
+    
                 </div>
-                </ng-container>
-                
-                <ng-template #elseBlock>
-                  <h1 style="color: red;" class="Issued" >This Book is Alread Issued</h1>
-                </ng-template>
+              </ng-container>
+              
+              <ng-template #elseBlock>
 
+                <h1 style="color: red;" class="Issued">This Book is Already Issued</h1>
+              </ng-template>
+
+              
 
       
             </div>

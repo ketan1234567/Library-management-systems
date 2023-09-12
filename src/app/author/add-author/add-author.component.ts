@@ -24,6 +24,8 @@ export class AddAuthorComponent implements OnInit {
     console.log(this.reactiveForm.value)
     this.processValidation=true;
     if(this.reactiveForm.valid){
+      console.log("This is author");
+      
       const data=this.router
       this.service.addAuthor(this.reactiveForm.value).subscribe((result)=>{
         if(result.statusText==="OK"){
