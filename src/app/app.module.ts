@@ -33,6 +33,7 @@ import { CommonModule, DatePipe } from '@angular/common';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -60,6 +61,7 @@ import { CommonModule, DatePipe } from '@angular/common';
     NavbarComponent,
     ViewUsersComponent,
     CardComponent,
+    
   
 
   ],

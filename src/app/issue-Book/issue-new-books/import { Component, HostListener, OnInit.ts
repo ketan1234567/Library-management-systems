@@ -29,7 +29,6 @@ export class IssueNewBooksComponent implements OnInit {
   allBooksdata: any
   IssueBookData:any
   data:any
-  processValidation:any;
   allreadyIssedBooks:any
   stdNames$: Observable<string[]> | undefined;
    // Filtered array
@@ -87,7 +86,7 @@ export class IssueNewBooksComponent implements OnInit {
             // const  marks = value.marks;
             this.matchedData = value
             this.show = true;
-            console.log(this.matchedData);
+          //  console.log(this.matchedData);
           } else {
             //console.log("incorrect id");
           }
@@ -104,110 +103,75 @@ export class IssueNewBooksComponent implements OnInit {
         this.matchedData = null;
       }
     });
+
+
     this.elementRef.nativeElement.querySelector('#BookId').addEventListener('keyup', (event: KeyboardEvent) => {
-      //alert("ketan")
-          // Execute your logic here.
-         //console.log("key up",event);
-          
-        
 
-          
-          
-          const temp2=(event.target as HTMLTextAreaElement).value
+      const temp2 = (event.target as HTMLTextAreaElement).value;
 
-          
-           
-
-
-          this.servicess.getAllBooksData().subscribe((result)=>{
-            this.getAllBooksData=result
-           // this.checkdata=result.body
-           //console.log(this.getAllBooksData);
-         this.getAllBooksData.forEach((value: any, key: any) => {
-          //console.log(temp2==value.isbn_number);
-          const book= this.IssueBookData.find( (book: { isbn_number: any }) => {return book.isbn_number==  temp2})
-          
-          if (!this.allBooksdata) {
-            this.allBooksdata = {}; // Initialize it as an empty object if it's undefined
-          }
-          
-          if (book) {
-            const main = book.isbn_number;
-            this.allBooksdata.alread = main;
-            //console.log(this.allBooksdata);
-  
-          } else if (book !== undefined) {
-          //  console.log(book.isbn_number[0]);
-            const main = book.isbn_number;
-           if (!this.allBooksdata) {
-              this.allBooksdata = {}; // Initialize it as an empty object if it's still null
-            }
-         // Assign the 'alread' property to 'this.allBooksdata'
-            console.log(this.allBooksdata);
-          } else {
-            const that = this;
-            if (temp2 === value.isbn_number) {
-              this.allBooksdata = value;
-              console.log("this is right", that.allBooksdata);
-            } else {
-              // Assign the 'alread' property to 'this.allBooksdata'
-              if (!this.allBooksdata) {
-                this.allBooksdata = {}; // Initialize it as an empty object if it's still null
-              }
-              this.allBooksdata.allData = temp2;
-              this.show = true;
-              console.log("alread set", that.allBooksdata);
-            }
-          }
-          })
+      this.servicess.getAllBooksData().subscribe((result) => {
+        this.getAllBooksData = result;
       
-          })
 
-        })
- 
+      if (this.getAllBooksData !== undefined) {
 
-        
-     
+        this.getAllBooksData.forEach((value: any, key: any) => {
+          const book = this.IssueBookData.find((book: { isbn_number: any }) => {
+            return book.isbn_number == temp2;
+        });
+    
+        if (temp2 == value.isbn_number) {
+          this.allBooksdata = value; // Assign the entire 'value' object to 'this.allBooksdata
+                this.show = true;
+          // Handle the case when the ISBN number matches 'temp2'.
+      } else if (book !== undefined) {
+        const main = book.isbn_number;
+          if (!this.allBooksdata) {
+            this.allBooksdata = {}; // Initialize it as an empty object if it's still null
+        }
+        this.allBooksdata.alread = [main];  // Assign the 'alread' property to 'this.allBooksdata'
+        console.log(this.allBooksdata);
+      } else {
+        console.log("isbn_number not found" + temp2);
+          // Handle the case when neither the ISBN number nor 'book' is found.
       }
-      ngAfterViewInit() {
-        console.log("This is ngAfterViewInit");
-        
+          });
+     } else {
+        console.log("getAllBooksData is undefined.");
+     }
+    });
+
+    })
+  
         this.elementRef.nativeElement.querySelector('#BookId').addEventListener('keydown', (event: KeyboardEvent) => {
           // Check for allowed keys on keydown
-          const key = event.key; // const {key} = event; ES6+
-          if ( key === "Delete" || key === "Backspace") {
+          if ( event.key === 'Backspace') {
             console.log("Keydown");
             
             this.reset()
             this.show = false;
           
             this.allBooksdata = null;
-      
           }
         });
       }
+     
+      
   reactiveForm = new FormGroup({
-    StudentId:new FormControl('', [
-      Validators.required,
-      Validators.pattern('^[0-9]*$')
-    ]),
-    BookId: new FormControl('', [
-      Validators.required,
-      Validators.pattern('^[0-9]*$')
-    ]),
+    StudentId: new FormControl('', Validators.required),
+    BookId: new FormControl('', Validators.required),
     ReturnDate:new FormControl('',Validators.required)
   })
   addIssueBooks() {
-    this.processValidation=true
-   if(this.reactiveForm.valid && this.reactiveForm.value.BookId===this.reactiveForm.value.BookId){
-      console.log("This is ketan");
+    //console.log(this.reactiveForm.value);
+    //console.log(this.allBooksdata.isbn_number);
+   if(this.reactiveForm.valid || this.reactiveForm.value.BookId===this.reactiveForm.value.BookId){
+      //console.log("This is ketan");
       this.getAllBooksID=this.allBooksdata._id
       //console.log(this.getAllBooksID);
       this.reactiveForm.value.BookId=this.getAllBooksID
       /*if(this.IssueBookData.body.is){
       }*/
-
-      
       //console.log(this.reactiveForm.value);
       this.services.GetIsssueBooks(this.reactiveForm.value).subscribe((result)=>{
         const data=this.router

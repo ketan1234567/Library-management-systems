@@ -48,9 +48,17 @@
                            <input type="text" class="form-control" id="isbn-number" formControlName="isbn_number">
                          </div>
                          <div class="mb-3">
-                           <label for="formFile" class="form-label">Default file input example</label>
-                           <input class="form-control" type="file" id="formFile" >
-                         </div>
+                          <label for="formFile" class="form-label">Default file input example</label>
+                          <input class="form-control" type="file" id="formFile">
+                          <!-- Display the image if the condition is true -->
+                          <div  >
+                          <ng-container *ngIf="editBooksValue?.data">
+
+                            <input class="form-control" type="file" id="formFile">
+                            <img src="http://localhost:1010/files/{{editBooksValue?.data}}" width="auto" height="auto">
+                          </ng-container>
+                          </div>
+                        </div>
                   
                        </div>
                        <div class="mb-3 text-center">

@@ -51,7 +51,7 @@ export class FileUploadService {
     )
   }
   UpdatedBooks(data:any):Observable<any>{
-    let api_url=`${this.baseUrl}/update`;
+    let api_url=`${this.baseUrl}/mainUpdated`;
     return this.http.put(api_url+"/"+data.id,data,{observe:'response',withCredentials:true}).pipe(
       catchError(this.handleError)
     )

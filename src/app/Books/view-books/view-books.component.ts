@@ -7,6 +7,8 @@ import Swal from 'sweetalert2';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthorService } from 'src/app/author/author.service';
 
+
+
 @Component({
   selector: 'app-view-books',
   templateUrl: './view-books.component.html',
@@ -16,15 +18,19 @@ export class ViewBooksComponent implements OnInit {
   categoryData:any
   AuthorData:any
   image: any;
+  mainData:any
   editBooks:any
   editBooksValue: any;
+  data:any
   constructor(
-    private readonly domSanitizer: DomSanitizer,
-    private readonly service: FileUploadService,
+    private  domSanitizer: DomSanitizer,
+    private  service: FileUploadService,
     private serviceB:BooksService,
     private serviceAu:AuthorService,
 
   ) {}
+
+
   ngOnInit() {
     this.AddbookImages()
 
@@ -39,6 +45,7 @@ export class ViewBooksComponent implements OnInit {
 
     this.service.getAllData().subscribe((result)=>{
    this.image=result
+   this.mainData=result
    //console.log(result);
    
     })
@@ -51,25 +58,28 @@ export class ViewBooksComponent implements OnInit {
     category:new FormControl('',Validators.required),
     isbn_number:new FormControl('',Validators.required)
   })
-  onSubmit(){
 
-  }
-  onEditUser(_id:any){
+  onEditUser(id:any){
    // alert(id)
-      this.service.GetEditBooks(_id).subscribe((result)=>{
+      this.service.GetEditBooks(id).subscribe((result)=>{
       //console.log(result);
-      this.editBooks=result.body._id
+      this.editBooks=result.body
       this.editBooksValue=result.body
-      this.reactiveForm.setValue({id:this.editBooks,book_name:this.editBooksValue.book_name,author:this.editBooksValue.author,price:this.editBooksValue.price,category:this.editBooksValue.category,isbn_number:this.editBooksValue.isbn_number})
+      //console.log(this.editBooksValue);
+      
+      this.reactiveForm.setValue({id:this.editBooksValue._id,book_name:this.editBooksValue.book_name,author:this.editBooksValue.author,price:this.editBooksValue.price,category:this.editBooksValue.category,isbn_number:this.editBooksValue.isbn_number})
 
     })
+  }
+  onSubmit(){
+
   }
 
   AddbookImages(){
   console.log(this.reactiveForm.value);
   }
   UpdateAllDataImages(){
-    //console.log("in update form",this.reactiveForm.value)
+    console.log("in update form",this.reactiveForm.value)
     this.service.UpdatedBooks(this.reactiveForm.value).subscribe((result)=>{
 
       if(result.statusText==="OK"){
@@ -78,7 +88,7 @@ export class ViewBooksComponent implements OnInit {
       }else{
         Swal.fire({ text: "Error", icon: 'error'})
       }
-      //console.log(result,"In result");
+    console.log(result,"In result");
 
 
     }) 
