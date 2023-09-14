@@ -20,7 +20,7 @@ export class FileUploadService {
    }
   upload(file: any,data:any): Observable<HttpEvent<any>> {
    const formData: FormData = new FormData();
-   console.log(data);
+   //console.log(data);
    
      formData.append('file', file);
      
@@ -50,15 +50,48 @@ export class FileUploadService {
       catchError(this.handleError)
     )
   }
-  UpdatedBooks(data:any):Observable<any>{
+  /*UpdatedBooks(data:any):Observable<any>{
     let api_url=`${this.baseUrl}/mainUpdated`;
     return this.http.put(api_url+"/"+data.id,data,{observe:'response',withCredentials:true}).pipe(
       catchError(this.handleError)
+
     )
-  }
+  }*/
+
+  /*UpdatedBooks(file: any,data:any): Observable<HttpEvent<any>> {
+    const formData: FormData = new FormData();
+    console.log(data);
+    
+      formData.append('file', file);
+    formData.append('data', JSON.stringify(data));
+     
+     const req = new HttpRequest('put', `${this.baseUrl}/UpdateImagesCodes`, formData ,{
+       reportProgress: true,
+       responseType: 'json'
+     }); 
+     return this.http.request(req);
+   }*/
+
+
   getAllBooksData(): Observable<any> {
     return this.http.get(`${this.baseUrl}/allDataImages`)
   }
+
+  MainUploadDataFiles(file: any,data:any): Observable<HttpEvent<any>> {
+    const formData: FormData = new FormData();
+
+
+      formData.append('file', file);
+   
+      formData.append('data', JSON.stringify(data));
+
+      //console.log(formData);
+     const req = new HttpRequest('put', `${this.baseUrl}/UpdateImagesCodes`, formData ,{
+       reportProgress: true,
+       responseType: 'json'
+     }); 
+     return this.http.request(req);
+   }
 
 
     // Error

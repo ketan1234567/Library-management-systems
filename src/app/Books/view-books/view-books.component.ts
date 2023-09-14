@@ -2,10 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { FileUploadService } from '../file-upload.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { BooksService } from 'src/app/Category/BooksService';
-import { Subscriber, subscribeOn } from 'rxjs';
+import { Observable, Subscriber, subscribeOn } from 'rxjs';
 import Swal from 'sweetalert2';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthorService } from 'src/app/author/author.service';
+import { HttpEventType, HttpResponse } from '@angular/common/http';
+import { Router } from '@angular/router';
+import { MyObjectType } from './MyObjectType';
+
+
 
 
 
@@ -22,14 +27,29 @@ export class ViewBooksComponent implements OnInit {
   editBooks:any
   editBooksValue: any;
   data:any
+  selectedFiles?: FileList;
+  currentFile?: File;
+  progress = 0;
+  message = '';
+  fileInfos?: Observable<any>;
   constructor(
     private  domSanitizer: DomSanitizer,
     private  service: FileUploadService,
     private serviceB:BooksService,
     private serviceAu:AuthorService,
+    private router:Router
 
   ) {}
+  selectFile(event:any):void{
+    this.selectedFiles = event.target.files;
+    console.log(this.selectedFiles);
+    //console.log(this.reactiveForm)
+  }
+upload(): void {
+}
 
+AddbookImages(){
+}
 
   ngOnInit() {
     this.AddbookImages()
@@ -65,9 +85,10 @@ export class ViewBooksComponent implements OnInit {
       //console.log(result);
       this.editBooks=result.body
       this.editBooksValue=result.body
-      //console.log(this.editBooksValue);
+      console.log(this.editBooksValue);
       
-      this.reactiveForm.setValue({id:this.editBooksValue._id,book_name:this.editBooksValue.book_name,author:this.editBooksValue.author,price:this.editBooksValue.price,category:this.editBooksValue.category,isbn_number:this.editBooksValue.isbn_number})
+      this.reactiveForm.setValue({id:this.editBooksValue._id,book_name:this.editBooksValue.book_name,author:this.editBooksValue.author,price:this.editBooksValue.price,category:this.editBooksValue.category,isbn_number:this.editBooksValue.isbn_number}
+       )
 
     })
   }
@@ -75,27 +96,75 @@ export class ViewBooksComponent implements OnInit {
 
   }
 
-  AddbookImages(){
-  console.log(this.reactiveForm.value);
-  }
   UpdateAllDataImages(){
-    console.log("in update form",this.reactiveForm.value)
-    this.service.UpdatedBooks(this.reactiveForm.value).subscribe((result)=>{
+    this.progress = 0;
+    console.log(this.selectedFiles);
+    if (this.selectedFiles) {
+      const file: File | null = this.selectedFiles.item(0);
+    // console.log(file);
+     
+      if (file) {
+        this.currentFile = file;
+       // console.log(this.currentFile.name);
+        //console.log(this.reactiveForm.value);
+   
 
-      if(result.statusText==="OK"){
-        Swal.fire({ text: "Updated Successfully", icon: 'success'}).then(
-        )
-      }else{
-        Swal.fire({ text: "Error", icon: 'error'})
+
+  
+
+        this.service.MainUploadDataFiles(this.currentFile,this.reactiveForm.value).subscribe(
+
+          
+          
+          
+          {
+
+          next: (event: any) => {
+            if (event.type === HttpEventType.UploadProgress) {
+              this.progress = Math.round((100 * event.loaded) / event.total);
+            } else if (event instanceof HttpResponse) {
+              this.message = event.body.message;
+              this.fileInfos = this.service.getFiles();
+            }
+          },
+          error: (err: any) => {
+            console.log(err);
+            this.progress = 0;
+
+            if (err.error && err.error.message) {
+              this.message = err.error.message;
+            } else {
+              this.message = 'Could not upload the file!';  
+            }
+
+            this.currentFile = undefined;
+          },
+
+        });
+        const data=this.router
+        if(this.currentFile){
+          Swal.fire({ text: "Successfully Submit", icon: 'success'})
+          .then(function (result) 
+          
+          {data.navigate(['/view-books'])}
+          )
+        }else{
+          Swal.fire({ text: "Error", icon: 'error'}).then(function (result) {data.navigate(['/tables'])})
+        }
+
+
+
       }
-    console.log(result,"In result");
+  
+    }
+  }
 
+  //  console.log("in update form",this.reactiveForm.value)
 
-    }) 
-    this.ngOnInit() 
+   
     
 
-  }
+  
 
   deleteuser(id:any){
     Swal.fire({

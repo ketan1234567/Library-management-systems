@@ -49,13 +49,14 @@
                          </div>
                          <div class="mb-3">
                           <label for="formFile" class="form-label">Default file input example</label>
-                          <input class="form-control" type="file" id="formFile">
+                          <input class="form-control" type="file" id="formFile"  (change)="selectFile($event)" accept="image/*">
                           <!-- Display the image if the condition is true -->
                           <div  >
                           <ng-container *ngIf="editBooksValue?.data">
-
-                            <input class="form-control" type="file" id="formFile">
+                          
+                          
                             <img src="http://localhost:1010/files/{{editBooksValue?.data}}" width="auto" height="auto">
+                          
                           </ng-container>
                           </div>
                         </div>
