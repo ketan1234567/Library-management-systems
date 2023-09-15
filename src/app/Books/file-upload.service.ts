@@ -79,9 +79,13 @@ export class FileUploadService {
 
   MainUploadDataFiles(file: any,data:any): Observable<HttpEvent<any>> {
     const formData: FormData = new FormData();
+    //console.log(file);
+    
 
 
       formData.append('file', file);
+      console.log(formData);
+      
    
       formData.append('data', JSON.stringify(data));
 

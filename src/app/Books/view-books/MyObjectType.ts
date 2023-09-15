@@ -6,4 +6,5 @@ export interface MyObjectType {
   category: any
   isbn_number: any
   data: any // Add 'data' property
+  file:any
 }

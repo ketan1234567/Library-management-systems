@@ -37,9 +37,7 @@ export class ViewBooksComponent implements OnInit {
     private  service: FileUploadService,
     private serviceB:BooksService,
     private serviceAu:AuthorService,
-    private router:Router
-
-  ) {}
+    private router:Router) {}
   selectFile(event:any):void{
     this.selectedFiles = event.target.files;
     console.log(this.selectedFiles);
@@ -85,7 +83,7 @@ AddbookImages(){
       //console.log(result);
       this.editBooks=result.body
       this.editBooksValue=result.body
-      console.log(this.editBooksValue);
+     // console.log(this.editBooksValue);
       
       this.reactiveForm.setValue({id:this.editBooksValue._id,book_name:this.editBooksValue.book_name,author:this.editBooksValue.author,price:this.editBooksValue.price,category:this.editBooksValue.category,isbn_number:this.editBooksValue.isbn_number}
        )
@@ -98,25 +96,26 @@ AddbookImages(){
 
   UpdateAllDataImages(){
     this.progress = 0;
-    console.log(this.selectedFiles);
+
     if (this.selectedFiles) {
       const file: File | null = this.selectedFiles.item(0);
-    // console.log(file);
+      const data = this.reactiveForm.value as { id: any; book_name: string | null; author: string | null; price: string | null; category: string | null; isbn_number: string | null; data?: any };
+      const hello=file
+      data.data=hello
+      console.log(file);
+  
+   
      
       if (file) {
         this.currentFile = file;
        // console.log(this.currentFile.name);
-        //console.log(this.reactiveForm.value);
-   
 
 
-  
-
+        const ddd=this.reactiveForm.value
         this.service.MainUploadDataFiles(this.currentFile,this.reactiveForm.value).subscribe(
 
           
-          
-          
+
           {
 
           next: (event: any) => {
