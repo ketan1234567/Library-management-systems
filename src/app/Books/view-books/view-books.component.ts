@@ -102,15 +102,14 @@ AddbookImages(){
       const data = this.reactiveForm.value as { id: any; book_name: string | null; author: string | null; price: string | null; category: string | null; isbn_number: string | null; data?: any };
       const hello=file
       data.data=hello
-      console.log(file);
+      console.log(data);
   
    
      
       if (file) {
         this.currentFile = file;
-       // console.log(this.currentFile.name);
-
-
+        //console.log(file);
+        //console.log(this.reactiveForm.value);
         const ddd=this.reactiveForm.value
         this.service.MainUploadDataFiles(this.currentFile,this.reactiveForm.value).subscribe(
 

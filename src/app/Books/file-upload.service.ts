@@ -84,7 +84,7 @@ export class FileUploadService {
 
 
       formData.append('file', file);
-      console.log(formData);
+    console.log(formData);
       
    
       formData.append('data', JSON.stringify(data));
