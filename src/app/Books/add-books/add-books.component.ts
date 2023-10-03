@@ -23,8 +23,6 @@ export class AddBooksComponent implements OnInit {
   fileInfos?: Observable<any>;
   constructor(private uploadService:FileUploadService,private router:Router,private serviceB:BooksService,private serviceAU:AuthorService){}
   ngOnInit() {
-
-
     this.serviceAU.viewAuthor().subscribe((result)=>{
       this.AuthorData=result.body;
      // console.log(this.AuthorData)
@@ -64,10 +62,6 @@ export class AddBooksComponent implements OnInit {
         this.currentFile = file;
   
         this.uploadService.upload(this.currentFile,this.reactiveForm.value).subscribe(
-
-          
-          
-          
           {
 
           next: (event: any) => {

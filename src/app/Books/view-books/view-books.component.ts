@@ -100,8 +100,8 @@ AddbookImages(){
     if (this.selectedFiles) {
       const file: File | null = this.selectedFiles.item(0);
       const data = this.reactiveForm.value as { id: any; book_name: string | null; author: string | null; price: string | null; category: string | null; isbn_number: string | null; data?: any };
-      const hello=file
-      data.data=hello
+      //console.log(file?.name);
+      data.data=file?.name
       console.log(data);
   
    

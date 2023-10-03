@@ -20,6 +20,7 @@ export class SiginService {
   apiurl_1 = 'http://localhost:1010/login-data/login'
   apiurl_3 = 'http://localhost:1010'
 
+
   CheckLoginData(data: any): Observable<any> {
     let api_url = `${this.apiurl_1}`;
     return this.httpclient.post(api_url, data, { observe: 'response', withCredentials: true }).pipe(
@@ -74,6 +75,14 @@ export class SiginService {
       catchError(this.handleError)
     )
   }
+
+    //update Admin Password
+    UpdateAdminPassword(vishal: any): Observable<any> {
+      let api_url = `${this.apiurl_3}/UpdatedAdminpassword`;
+      return this, this.httpclient.put(api_url + "/" + vishal._id, vishal, { observe: 'response', withCredentials: true }).pipe(
+        catchError(this.handleError)
+      );
+    }
 
 
 
