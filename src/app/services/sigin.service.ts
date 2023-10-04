@@ -84,6 +84,14 @@ export class SiginService {
       );
     }
 
+        //Update User Password
+        UpdateUserPassword(anil: any): Observable<any> {
+          let api_url = `${this.apiurl_3}/UpdateUserPassword`;
+          return this, this.httpclient.put(api_url + "/" + anil._id, anil, { observe: 'response', withCredentials: true }).pipe(
+            catchError(this.handleError)
+          );
+        }
+
 
 
   // Error

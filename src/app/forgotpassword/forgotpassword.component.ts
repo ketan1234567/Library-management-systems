@@ -48,29 +48,53 @@ export class ForgotpasswordComponent implements OnInit {
     this.userData=JSON.parse(this.userDetails).fullname;
     this.userRole=JSON.parse(this.userDetails).role;
     this.userId=JSON.parse(this.userDetails).id;
-     console.log(this.userData);
+     console.log(this.userRole);
 
   }
 
   onSubmit() {
- this.resetPasswordForm.value._id=this.userId
- this.resetPasswordForm.value.email=this.userData
- this.resetPasswordForm.value.role=this.userRole
- this.resetPasswordForm.value.password=this.resetPasswordForm.value.confirmPassword
-    console.log(this.resetPasswordForm.value);
-    const vishal=this.resetPasswordForm.value
-    this.services.UpdateAdminPassword(vishal).subscribe((result)=>{
-      const data=this.router
-      if(result.statusText==="OK"){
-        Swal.fire({ text: "Updated Successfully", icon: 'success'}).then(function (result) {data.navigate(['/sign-in'])})
-      }else{
-        Swal.fire({ text: "Error", icon: 'error'})
-      }
-      console.log(result,"In result")
-  
-     //console.log(result);
-     
-    })
+    if( this.resetPasswordForm.value.role=this.userRole==1){
+      this.resetPasswordForm.value._id=this.userId
+      this.resetPasswordForm.value.email=this.userData
+      this.resetPasswordForm.value.role=this.userRole
+      this.resetPasswordForm.value.password=this.resetPasswordForm.value.confirmPassword
+         console.log(this.resetPasswordForm.value);
+         const vishal=this.resetPasswordForm.value
+         this.services.UpdateAdminPassword(vishal).subscribe((result)=>{
+           const data=this.router
+           if(result.statusText==="OK"){
+             Swal.fire({ text: "Updated Successfully", icon: 'success'}).then(function (result) {data.navigate(['/sign-in'])})
+           }else{
+             Swal.fire({ text: "Error", icon: 'error'})
+           }
+           console.log(result,"In result")
+       
+          //console.log(result);
+          
+         })
+
+    }else{
+      this.resetPasswordForm.value._id=this.userId
+      this.resetPasswordForm.value.email=this.userData
+      this.resetPasswordForm.value.role=this.userRole
+      this.resetPasswordForm.value.password=this.resetPasswordForm.value.confirmPassword
+         console.log(this.resetPasswordForm.value);
+         const anil=this.resetPasswordForm.value
+         this.services.UpdateUserPassword(anil).subscribe((result)=>{
+           const data=this.router
+           if(result.statusText==="OK"){
+             Swal.fire({ text: "Updated  User Password Successfully", icon: 'success'}).then(function (result) {data.navigate(['/sign-in'])})
+           }else{
+             Swal.fire({ text: "Error", icon: 'error'})
+           }
+           console.log(result,"In result")
+       
+          //console.log(result);
+          
+         })
+      
+    }
+
 
     if (!this.resetPasswordForm?.valid) {
       return;
