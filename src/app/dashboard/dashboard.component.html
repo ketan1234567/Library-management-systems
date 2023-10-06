@@ -198,7 +198,7 @@
        </div>
     </div>
  </div>
- <div class="row"  *ngIf="userRole">
+ <div class="row"  *ngIf="userRole ">
    <!----<div class="col-12 mb-4">
        <div class="card bg-yellow-100 border-0 shadow">
           <div class="card-header d-sm-flex flex-row align-items-center flex-0">
@@ -229,10 +229,10 @@
                       <h3 class="fw-extrabold mb-1">345,678</h3>
                    </div>
                 </div>
-                <div class="col-12 col-xl-7 px-xl-0">
+                <div class="col-12 col-xl-7 px-xl-0" *ngIf="categoryCount">
                    <div class="d-none d-sm-block">
                       <h2 class="h5">Category</h2>
-                      <h3 class="fw-extrabold mb-1">345k</h3>
+                      <h3 class="fw-extrabold mb-1">{{categoryCount.category}}</h3>
                    </div>
       
                   
@@ -259,7 +259,7 @@
                 <div class="col-12 col-xl-7 px-xl-0">
                    <div class="d-none d-sm-block">
                       <h2 class="h5">Author</h2>
-                      <h3 class="fw-extrabold mb-1">$43,594</h3>
+                      <h3 class="fw-extrabold mb-1">{{categoryCount.authorCount}}</h3>
                    </div>
                 
      
@@ -286,7 +286,7 @@
                 <div class="col-12 col-xl-7 px-xl-0">
                    <div class="d-none d-sm-block">
                       <h2 class="h5">Books</h2>
-                      <h3 class="fw-extrabold mb-1">50.88%</h3>
+                      <h3 class="fw-extrabold mb-1">{{categoryCount .imagesCount}}</h3>
                    </div>
               
         
@@ -402,7 +402,7 @@
              <div class="card-header d-flex flex-row align-items-center flex-0 border-bottom">
                 <div class="d-block">
                    <div class="h6 fw-normal text-gray mb-2">Total Users</div>
-                   <h2 class="h3 fw-extrabold">452</h2>
+                   <h2 class="h3 fw-extrabold">{{categoryCount.UserCount}}</h2>
                    <div class="small mt-2"><span class="fas fa-angle-up text-success"></span> <span class="text-success fw-bold">18.2%</span></div>
                 </div>
                 <div class="d-block ms-auto">

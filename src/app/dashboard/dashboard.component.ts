@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subject, fromEvent, takeUntil } from 'rxjs';
 import Swal from 'sweetalert2';
+import { BooksService } from '../Category/BooksService';
+import { FileUploadService } from '../Books/file-upload.service';
+import { AuthorService } from '../author/author.service';
+import { SiginService } from '../services/sigin.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -17,13 +21,36 @@ export class DashboardComponent implements OnInit {
   userDataAdmin:any
   userRole:any;
   adminRole:any
+  categoryCount:any
+
 
   private unsubscriber : Subject<void> = new Subject<void>();
-  constructor(private router: Router) { }
+  constructor(private router: Router,private services:BooksService,private fileservices:FileUploadService,private authorServices:AuthorService,private signservices:SiginService) { }
 
   ngOnInit(): void {
     this.AdminDetails()
     this.UserDetails()
+  
+    this.services.viewCategory().subscribe((result)=>{
+      this.categoryCount = {};
+    this.categoryCount.category=result.body.length
+          console.log(this.categoryCount);
+    })
+    this.fileservices.getAllData().subscribe((result)=>{
+      //console.log(result.length);
+    this.categoryCount.imagesCount=result.length
+    })
+    this.authorServices.viewAuthor().subscribe((result)=>{
+      this.categoryCount.authorCount=result.body.length
+     //console.log(result.body.length);
+     
+    })
+    this.signservices.GetUserDetails().subscribe((result)=>{
+      this.categoryCount.UserCount=result.body.length
+      //console.log();
+      
+    })
+
 
     
     history.pushState(null, '');
