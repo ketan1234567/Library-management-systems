@@ -1,0 +1,507 @@
+There are two types scrpting language
+1)server side scriting labguage
+2)client side Scripting language
+
+
+2)what is difference between library and language
+1)library (React js,Angular js) (Library purna application develop karun shakat nhi)
+2)Framework(it can develop whole application)
+
+*)what is DOM
+
+when you run in html file in browser in called (DOM)
+
+it can whole code is document
+
+every element called object
+
+structur is called model
+
+*)what is oops ?
+
+*)How do I identify is decorator 
+when starting is prefixin @NgModule([
+
+])
+It is called decorator
+
+there are 
+
+
+meta Data
+
+1)Decalration:-component name 
+2)import :-predefined module
+3)Provider:-services name
+4)boostratup:-where shoulde be run this (Booting process)
+
+
+first time it was load index.html
+
+
+why is use component?
+
+*)Decorator is function its invoke automatically 
+
+*)error handing?
+it is showing message to instaed of error 
+
+*)what is different metaData?
+
+*)What is Encapsulation?
+
+method property and rapping data
+
+*)css scop define karanasthi karathi hotay angular 
+
+emulated (default) 1)No shadow dom style Encapsulation
+
+
+native/shadow down 2)shadow dom  style Encapsulation
+
+ 
+none 3) no shadow dom no style Encapsulation
+
+var:- var is globally type varible
+
+let:let scop type of varible type
+
+ const:const is scop of varible type
+declration and definition in should be same line 
+__________________________________________________END_____________________________
+
+10/11/2023
+
+*)Interfce is contain name of method 
+we can not defined not body
+
+interface la implement karanasathi we want write implements
+
+ineterface abc{
+showData()
+show1()
+display()
+}
+
+class xyz implments abc{
+showData(){
+conslog.log("showData");
+
+}
+show1(){
+conslog.log("show1);
+}
+display()
+conslog.log("display");
+}
+
+viewProviders:[xyz]
+
+constructor(private:_xyz:xyz){
+_Xyz.showData();
+_Xyz.show1();
+_Xyz.display();
+let mycolor:color
+mycolor=color.red
+consloe.log(mycolor)
+
+}
+ng g enum colors
+
+export enum colors{
+red=10
+green=20
+yellow=30
+blue=40
+
+}
+_________________________END_______________________________________
+11/11/2023
+
+*)What is Tuple
+we can put any value but we should be define before name
+
+  tupleMethod(){
+    var empid:number=10
+    var name:string="ketan"
+    let employee:[number,string]=[empid,name]
+
+    employee:[103,"damini"]
+    employee.push("vishal")
+    //console.log(employee);
+   // console.log(typeof(employee));
+    let person:[number,string][]=[
+      [1,"chandankumar"],
+      [2,"deshmukh"],
+      [3,"Anil"]
+    ]
+
+    console.log(person);
+    
+  }
+
+
+*)enum is defined in const string value 
+
+ng g enum color
+
+export enum Color {
+red=10,
+green=20,
+yellow=30
+}
+
+    let myColor:Color
+    myColor=Color.green
+    console.log(myColor);
+ _______________________-END__________________________________-
+*)why we use many function in project?
+beacuse we have specific requirement according we creates functions
+mainfunction(...anil: string[]):string{
+  return `${anil}`
+}
+    var result=this.mainfunction("uuu","vishal")
+    console.log(result);
+_________________________________________________________________
+*)what is generic method?
+
+genrickMethod<T>(arg:T){
+  return arg
+
+}
+    let output1=this.genrickMethod<string>("This is generic  method we did call")
+    let output2=this.genrickMethod<Number>(10)
+
+    console.log(output1);
+    console.log(output2);
+___________________________________________END_____________________________________
+*)What is promise?
+A Promise is an object representing the eventual completion or failure of an asynchronous operation. 
+A JavaScript Promise object contains both the producing code and calls to the consuming code. It can be used to deal with Asynchronous operation in JavaScript.
+
+Promise State:-
+Pending - Initial State, Not yet Fulfilled or Rejected
+Fulfilled/Resolved – Promise Completed 
+Rejected – Promise Failed
+
+A pending promise can either be Resolved with a value or Rejected with a reason (error).
+When either of these options happens, the associated handlers queued up by a promise's then method are called.
+A promise is said to be settled if it is either Resolved or Rejected, but not Pending. 
+
+exmple:
+ console.log("start");
+        function myfunction(name){
+            return new Promise((reslove,reject)=>{
+                setTimeout(()=>{
+            console.log("This is settimeout");
+            reslove(name)
+          },2000)
+            })
+    
+        }
+       function gethobee(name){
+        return new Promise((reslove,reject)=>{
+            setTimeout(()=>{
+            console.log("inside hobbies settimesout");
+            reslove(['circket','reading','writing'])
+          },1000)
+
+        });
+          
+        }
+        myfunction('ketan')
+        .then(num=>gethobee(num))
+        .then(hubby=>console.log(hubby))
+__________________________________________________END______________________________
+*)what is callback?
+A callback function is a function (It can be any function Anonymous Function, Arrow Function)
+ passed into another function as an argument,
+ which is then invoked inside the outer function to complete some kind of routine or action
+
+Synchronous - It waits for each operation to complete, after that it executes the next operation.
+Asynchronous - It never waits for each operation to complete, rather it executes all operations in the first GO only.
+
+ function myfunction(name,callback){
+          setTimeout(()=>{
+            console.log("This is settimeout");
+            callback(name)
+          },2000)
+        }
+       function gethobee(name,callback){
+            setTimeout(()=>{
+            console.log("inside hobbies settimesout");
+            callback(['circket','reading','writing'])
+          },1000)
+        }
+        const num=myfunction('ketan',(num)=>{ console.log(num);
+            gethobee(num,(hubby)=>{console.log(hubby)
+            })
+        })
+______________________________________________END______________________________________________
+*)What async function?
+async – This keyword is used to turn a function declaration to async function. 
+async Function - An async function is a function declared with the async keyword. An async function is a function that knows how to expect the possibility of the await keyword being used to invoke asynchronous code. It returns a Promise.
+
+await - The await operator is used to wait for a Promise. It can only be used inside an async function within regular JavaScript code. 
+await can be put in front of any async promise-based function to pause your code on that line until
+ the promise fulfills, then return the resulting value.
+
+Async Function
+async function function_name () {……….}
+
+Async Function Expression 
+let function_name = async function () {………….}
+
+Async Arrow Function 
+let function_name = async () => {………….}
+
+exmple:
+        console.log("start");
+        function myfunction(name){
+            return new Promise((reslove,reject)=>{
+                setTimeout(()=>{
+            console.log("This is settimeout");
+            reslove(name)
+          },2000)
+            })
+    
+        }
+       function gethobee(name){
+        return new Promise((reslove,reject)=>{
+            setTimeout(()=>{
+            console.log("inside hobbies settimesout");
+            reslove(['circket','reading','writing'])
+          },1000)
+
+        });
+          
+        }
+
+      async  function showHubby(){
+        try{
+        let num=await myfunction('ketan')
+        let hobby= await gethobee(num)
+        console.log(num);
+        console.log(hobby);
+        }catch{
+            console.log("This is count not found error");
+        }
+        }
+        showHubby()
+____________________________________END______________________________________________
+*)diretive(important)
+
+Basically, directives are used to extend the power of the HTML attributes and to change the 
+appearance or behavior of a DOM element.
+Directive in Angular is a javascript class, which is declared as @directive. Angular has 3 types of
+
+html daynamic karatay 
+1)Componet directive
+2)structual directive(ngif,ngfor,ngswitch)
+3)attribute directive
+
+2)Structural directives are a key part of Angular everyone should be familiar with. They are responsible 
+for manipulating DOM through adding, removing or changing the elements. Even if you have 
+never written a structural directive yourself, you have probably been using *ngIf and *ngFor in 
+your templates pretty often. The asterisk (*) states it is a structural directive.
+
+There are basically 3 built in structural directives available in Angular.
+• NgIf (*ngIf )
+• NgFor (*ngFor)
+• NgSwitch (*ngSwitch
+*)What is difference between ng-template and ng block?
+code la orginaze karanasathi kela hota
+
+This is custom ng if  
+
+  <ng-template [ngIf]="true">
+    <div>
+      Hello World
+    </div>
+  
+  </ng-template> 
+______________________________________________END______________________________
+*)ngIf  with async pipe
+data la tranform karatya
+1)synch calling
+2)asynch calling
+
+difference between obserable vs promise
+1)promise aka velesa aka request handle karashakat
+2)obserable aka velesa multiple request hanlde kara shkatay
+
+*)subserible method tayala real data madhe convert karatay 
+*)asynch pipe promise and obserable data convert karun read data detay
+
+<div *ngIf="_msg|async as sms; else elseblock">
+<b>{{sms}}</b>
+</div>
+<ng-template #elseblock>
+Loading__________
+</ng-template>
+
+  getmessage():Promise<string>{
+ let _message="This is ketan deshmukh"
+// return new Promise(reslove=>reslove(_message))
+return new Promise(reslove=>{
+  setTimeout(()=>reslove(_message),3000)
+})
+  }
+_________________________________END____________________________________
+<button (click)="getAllData()">Refresh</button>
+<br><br>
+
+  <table border="1">
+  <tr>
+    <td>Sr.No</td>
+    <td>EMP ID</td>
+    <td>Name</td>
+  </tr>
+  <ng-template ngFor let-data [ngForOf]="exmpleOfarray" let-i="index" [ngForTrackBy]="fntracyby">
+    <tr>
+      <td>{{i+1}}</td>
+     <td>{{data.id}}</td>
+     <td>{{data.name}}</td>
+    </tr>
+
+  </ng-template>
+ 
+</table>
+
+</div>
+getAllData(){
+  this.exmpleOfarray=[
+    {id:1,name:"deshmukh"},
+    {id:2,name:"deshmukh"},
+    {id:3,name:"deshmukh"},
+    {id:4,name:"deshmukh"},
+    {id:5,name:"deshmukh"},
+    {id:6,name:"rawat"},
+    {id:7,name:"vishal"},
+    {id:8,name:"sujit"},
+    ]
+
+
+}
+fntracyby(index:number,exmpleOfarray:any){
+return exmpleOfarray.id
+}
+__________________________________________________________END_____________________________
+
+1)Attribute directive
+appearance changes karatay 
+
+1)NgStyle
+2)NgClass
+
+1)NgStyle we have to write three way 
+
+1)NgStyle=string
+2)Ngstyle=array
+
+  employee = [
+    { name: "ketan", country: "india" },
+    { name: "hitesh", country: "uk" },
+    { name: "sunil", country: "usa" },
+    { name: "vishal", country: "china" },
+    { name: "anil", country: "pakishta" },
+    { name: "tilu", country: "poland" }
+  ]
+
+  getcolor(country: any) {
+    //debugger;
+    switch (country) {
+      case 'india':
+        return 'blue';
+      case 'uk':
+        return 'red';
+      case 'china':
+        return 'yellow';
+      case 'pakishta':
+        return 'green';
+      case 'poland':
+        return 'skyblue';
+    }
+    return null;
+
+  }
+
+
+
+<div *ngFor="let emp of employee">
+  <div [ngStyle]="{'background-color':getcolor(emp.country)}">Name:{{emp.name}} | country:{{emp.country}}   </div> 
+
+</div>
+3)NgStyle=object
+
+<h1>Attribute directive Dyanimcally change</h1>
+<div [ngStyle]="{'background-color':mycountry=='india' ? 'green':'red'}">
+Hello World
+</div>
+____________________________________________END_____________________________________
+)NgClass=string <p [ngClass]="'one three'">This is ngClass</p>
+2)NgClass=array <p [ngClass]="['one','three']">Using ng class with array</p>
+3)ngClass=object <p [ngClass]="{'one':true,'three':true}">ng Class with Object</p>
+
+<div *ngFor="let emp of employee; index as i">
+  <div [ngClass]="{'one':i%2==0,'three':i%2==1}"> {{i}} |Name:{{emp.name}} | country:{{emp.country}}   </div> 
+
+</div>
+_______________________________________________END___________________________________________
+difference between 
+property vs Attribute
+
+what is DOM
+
+The DOM stands for Document object Model when a browser loads 
+a web page then browsers creates document  object model 
+
+entire html we can say (document)
+table p hr h1  we can (object)
+
+
+<input type=text name="anil" value="ketan"/>
+
+1)name
+2)type
+3)value 
+
+this is attribute 
+
+when we render web page in html 
+
+we can propery  in DOM
+_____________________________________________________END__________________________________
+
+*)data binding
+
+1)one way data binding 
+
+*)Component to View 
+
+1)Interploation binding
+2)property Binding
+3)style binding (<button [style.font-weight]="isbold ?'bold':'normal'">style binding</button>)
+4)class binding 
+5)Attribute binding 
+
+*)View to Component 
+6)event binding 
+
+2)Two way Data Binding 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
